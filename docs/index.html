@@ -398,6 +398,33 @@
       line-height: 1.7;
       font-weight: 300;
     }
+    .service-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+      padding: 0;
+      background: transparent;
+      border: none;
+      color: var(--green-fresh);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      letter-spacing: 0.03em;
+      position: relative;
+    }
+    .service-btn::after {
+      content: '→';
+      font-size: 1.1rem;
+      transition: transform 0.3s ease;
+    }
+    .service-btn:hover {
+      color: var(--green-deep);
+    }
+    .service-btn:hover::after {
+      transform: translateX(4px);
+    }
     .service-soon {
       display: inline-block;
       margin-top: 0.75rem;
@@ -958,12 +985,14 @@
       <span class="service-icon" aria-hidden="true">🌸</span>
       <h3>Garden Design & Set Up</h3>
       <p>Complete garden creation — concept, plant curation, soil preparation, irrigation setup, and installation. We design and build gardens that thrive season after season for homes, villas, and offices across India.</p>
+      <a href="../Garden%20Set%20Up%20Landing%20Page.html" class="service-btn">Click Here</a>
     </article>
 
     <article class="service-card reveal" role="listitem">
       <span class="service-icon" aria-hidden="true">✂️</span>
       <h3>Garden Maintenance</h3>
       <p>Your garden deserves consistent care. Our maintenance programs include pruning, fertilising, pest management, seasonal replanting, and everything in between — on your schedule.</p>
+      <a href="../maintenance_1.html" class="service-btn">Click Here</a>
     </article>
 
     <article class="service-card reveal" role="listitem">
