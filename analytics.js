@@ -9,9 +9,7 @@
   var ADS_ID = 'AW-18292918449';
 
   // WhatsApp-click conversion label — same on every page.
-  // TODO: paste the label from the "WhatsApp click" conversion action you
-  // create in Google Ads (the part after "AW-18292918449/" in its snippet).
-  var WHATSAPP_ADS_LABEL = '';
+  var WHATSAPP_ADS_LABEL = '4t7KCPi3sNYcELGR35JE';
 
   if (typeof window.gtag === 'function') {
     window.gtag('config', ADS_ID);

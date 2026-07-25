@@ -541,9 +541,7 @@
     const msg = `🌿 *Terrarium / Aquascape Enquiry — GardenPro*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email || 'Not provided'}\n*Interested In:* ${service}\n*Message:* ${message || 'None'}\n\n_From gardenpro.in/terrarium_`;
 
     // Google Ads conversion — Terrarium lead form
-    // TODO: replace with the label from the "Form – Terrarium" conversion
-    // action you create in Google Ads (part after "AW-18292918449/").
-    if (window.gpAdsConvert) window.gpAdsConvert('' /* TERRARIUM_FORM_LABEL */);
+    if (window.gpAdsConvert) window.gpAdsConvert('mp3WCMKumdYcELGR35JE');
 
     window.open('https://wa.me/917561066345?text=' + encodeURIComponent(msg), '_blank');
     alert('Thank you! Opening WhatsApp so we can assist you right away.');
