@@ -322,6 +322,25 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Service","serviceType":"Garden Design & Setup","provider":{"@type":"LocalBusiness","name":"GardenPro India","areaServed":"Bengaluru"},"areaServed":{"@type":"City","name":"Bengaluru"},"description":"End-to-end garden design and setup for balcony, terrace, vertical and corporate gardens across Bengaluru, with before-and-after transformations."}
   </script>
+<style>
+  .hero-content { max-width: 1180px !important; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1.05fr 0.92fr; gap: 3rem; align-items: center; }
+  .hero-text { min-width: 0; }
+  .hero-collage { position: relative; display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 80px; gap: 0; border-radius: 16px; overflow: hidden; box-shadow: 0 26px 70px rgba(0,0,0,0.5); }
+  .hero-collage figure { position: relative; margin: 0; overflow: hidden; }
+  .hero-collage img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.08) contrast(1.02); transition: transform 0.7s ease; }
+  .hero-collage figure:hover img { transform: scale(1.06); }
+  .hero-collage .c-tall { grid-row: span 3; }
+  .hero-collage figure:not(.c-tall) { grid-row: span 2; }
+  .hero-collage::after { content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
+    background:
+      linear-gradient(100deg, var(--green-deep) 0%, rgba(26,58,42,0.5) 11%, rgba(26,58,42,0) 32%),
+      radial-gradient(130% 120% at 100% 0%, rgba(26,58,42,0) 58%, rgba(15,36,23,0.5) 100%),
+      linear-gradient(200deg, rgba(201,168,76,0.08), rgba(26,58,42,0) 40%); }
+  @media (max-width: 860px) {
+    .hero-content { grid-template-columns: 1fr !important; gap: 2.25rem; }
+    .hero-collage { grid-auto-rows: 86px; max-width: 560px; margin: 0 auto; }
+  }
+</style>
 </head>
 <body>
 
@@ -345,6 +364,7 @@
 <section class="hero" aria-labelledby="hero-heading">
   <div class="hero-bg"></div>
   <div class="hero-content">
+    <div class="hero-text">
     <div class="hero-badge">Real Projects · Real Results · Bengaluru</div>
     <h1 id="hero-heading">We turn <em>empty spaces</em><br>into living gardens</h1>
     <p>From bare balconies to corporate living walls. See exactly how we work, what the process looks like, and the results we deliver for homeowners and businesses across Bengaluru.</p>
@@ -360,6 +380,14 @@
       <span class="geo-tag">📍 Jayanagar</span>
       <span class="geo-tag">📍 Hebbal</span>
       <span class="geo-tag">📍 Sarjapur Road</span>
+    </div>
+    </div><!-- /hero-text -->
+    <div class="hero-collage" aria-hidden="true">
+      <figure class="c-tall"><img src="assets/stock/terrace.jpg" alt="Terrace garden" loading="eager"></figure>
+      <figure><img src="assets/stock/kitchen.jpg" alt="Kitchen herb garden" loading="eager"></figure>
+      <figure><img src="assets/stock/balcony.jpg" alt="Balcony garden" loading="eager"></figure>
+      <figure class="c-tall"><img src="assets/stock/vertical.jpg" alt="Vertical living wall garden" loading="eager"></figure>
+      <figure><img src="assets/stock/lawn.jpg" alt="Landscaped lawn with flower beds" loading="eager"></figure>
     </div>
   </div>
 </section>
