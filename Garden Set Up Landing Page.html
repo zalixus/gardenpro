@@ -642,6 +642,8 @@ function handleFormSubmit(e) {
   const desc = form.description.value.trim();
   if (!name || !phone) { alert('Please fill in your name and phone number.'); return; }
   const msg = `🌿 *New GardenPro Enquiry* (from Projects page)\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email||'Not provided'}\n*Service:* ${service}\n*Property:* ${property}\n*Budget:* ${budget}\n*Description:* ${desc||'None'}\n\n_Sent from gardenpro.in/projects_`;
+  // Google Ads conversion — Garden Design & Setup lead form
+  if (window.gpAdsConvert) window.gpAdsConvert('3EC4CJqMrMkcELGR35JE');
   document.getElementById('submitText').textContent = 'Sending...';
   setTimeout(() => {
     document.getElementById('formSuccess').style.display = 'block';

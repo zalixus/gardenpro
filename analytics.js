@@ -5,6 +5,30 @@
   if (window.__gardenProAnalyticsLoaded) return;
   window.__gardenProAnalyticsLoaded = true;
 
+  // ── Google Ads conversion tracking ──────────────────────────────────
+  var ADS_ID = 'AW-18292918449';
+
+  // WhatsApp-click conversion label — same on every page.
+  // TODO: paste the label from the "WhatsApp click" conversion action you
+  // create in Google Ads (the part after "AW-18292918449/" in its snippet).
+  var WHATSAPP_ADS_LABEL = '';
+
+  if (typeof window.gtag === 'function') {
+    window.gtag('config', ADS_ID);
+  }
+
+  // Fires a Google Ads conversion. `label` is the part after "AW-XXXX/".
+  // No-ops safely when the label is empty or gtag isn't loaded, so this is
+  // safe to ship before every label exists.
+  window.gpAdsConvert = function (label) {
+    if (!label || typeof window.gtag !== 'function') return;
+    window.gtag('event', 'conversion', {
+      send_to: ADS_ID + '/' + label,
+      value: 1.0,
+      currency: 'INR'
+    });
+  };
+
   var track = function (eventName, parameters) {
     if (typeof window.gtag === 'function') {
       window.gtag('event', eventName, parameters || {});
@@ -39,6 +63,9 @@
         link_text: label,
         page_path: window.location.pathname
       });
+      if (contactMethod === 'whatsapp') {
+        window.gpAdsConvert(element.getAttribute('data-ads-label') || WHATSAPP_ADS_LABEL);
+      }
       return;
     }
 

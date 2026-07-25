@@ -1298,11 +1298,10 @@
 </footer>
 
 <!-- WHATSAPP FLOATING BUTTON -->
-<a href="https://wa.me/917561066345?text=Hi%20GardenPro%2C%20I%27m%20interested%20in%20your%20services" class="wa-float" aria-label="Chat with us on WhatsApp" target="_blank">
+<a href="https://wa.me/917561066345?text=Hi%20GardenPro%2C%20I%27m%20interested%20in%20your%20services" class="wa-float" aria-label="Chat with us on WhatsApp" target="_blank" rel="noopener">
   <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004c-1.537 0-2.852-.926-2.852-2.062 0-1.135 1.315-2.062 2.852-2.062 1.536 0 2.852.927 2.852 2.062 0 1.135-1.315 2.062-2.852 2.062m5.849 9.028c-3.597 2.991-9.412 1.884-11.413-2.366-.639-1.374-.779-2.814-.419-4.185.747-2.83 3.136-4.77 6.08-4.77 1.077 0 2.11.203 3.08.601 3.278 1.439 5.534 4.884 5.122 8.524-.205 1.843-1.048 3.51-2.45 4.796M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0"/>
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>
-  <span class="wa-float-label">Chat with us</span>
 </a>
 
 <!-- Scroll reveal script -->
@@ -1354,21 +1353,31 @@
     sliderValue.textContent = new Intl.NumberFormat('en-IN').format(budgetSlider.value);
   });
 
-  // Contact form submission
-  document.getElementById('contact-form').addEventListener('submit', async (e) => {
+  // Contact form submission → WhatsApp handoff + Google Ads conversion
+  document.getElementById('contact-form').addEventListener('submit', (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      phone: formData.get('phone'),
-      services: formData.getAll('service'),
-      message: formData.get('message'),
-      timestamp: new Date().toISOString()
-    };
-    console.log('Form submitted:', data);
-    alert('Thank you! We\'ve received your inquiry and will be in touch within 24 hours.');
-    e.target.reset();
+    const form = e.target;
+    const name = (form.name.value || '').trim();
+    const email = (form.email.value || '').trim();
+    const phone = (form.phone.value || '').trim();
+    if (!name || !phone) { alert('Please fill in your name and phone number.'); return; }
+
+    const services = Array.from(form.querySelectorAll('input[name="service"]:checked'))
+      .map(c => c.parentElement.textContent.trim());
+    const inputView = document.getElementById('input-view');
+    const budget = (inputView && inputView.style.display !== 'none')
+      ? (document.getElementById('budget-input').value || 'Not specified')
+      : document.getElementById('budget-slider').value;
+    const message = (form.message.value || '').trim();
+
+    const msg = `🌿 *New Enquiry — GardenPro*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email || 'Not provided'}\n*Services:* ${services.length ? services.join(', ') : 'Not specified'}\n*Budget:* ₹${budget}\n*Message:* ${message || 'None'}\n\n_From gardenpro.in_`;
+
+    // Google Ads conversion — Home page lead form
+    if (window.gpAdsConvert) window.gpAdsConvert('il-GCPO4kskcELGR35JE');
+
+    window.open('https://wa.me/917561066345?text=' + encodeURIComponent(msg), '_blank');
+    alert('Thank you! Opening WhatsApp so we can assist you right away.');
+    form.reset();
   });
 </script>
 
