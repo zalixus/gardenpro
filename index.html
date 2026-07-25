@@ -661,7 +661,7 @@
       50% { transform: translateX(-50%) translateY(6px); }
     }
 
-    /* Fade-in on scroll — only on capable devices */
+    /* Fade-in on scroll, only on capable devices */
     @media (min-width: 769px) {
       .reveal {
         opacity: 0; transform: translateY(24px);
@@ -1395,9 +1395,9 @@
       : document.getElementById('budget-slider').value;
     const message = (form.message.value || '').trim();
 
-    const msg = `🌿 *New Enquiry — GardenPro*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email || 'Not provided'}\n*Services:* ${services.length ? services.join(', ') : 'Not specified'}\n*Budget:* ₹${budget}\n*Message:* ${message || 'None'}\n\n_From gardenpro.in_`;
+    const msg = `🌿 *New Enquiry, GardenPro*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email || 'Not provided'}\n*Services:* ${services.length ? services.join(', ') : 'Not specified'}\n*Budget:* ₹${budget}\n*Message:* ${message || 'None'}\n\n_From gardenpro.in_`;
 
-    // Google Ads conversion — Home page lead form
+    // Google Ads conversion, Home page lead form
     if (window.gpAdsConvert) window.gpAdsConvert('EX5fCKzGrdYcELGR35JE');
 
     window.open('https://wa.me/917561066345?text=' + encodeURIComponent(msg), '_blank');
