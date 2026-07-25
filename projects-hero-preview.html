@@ -323,16 +323,23 @@
   {"@context":"https://schema.org","@type":"Service","serviceType":"Garden Design & Setup","provider":{"@type":"LocalBusiness","name":"GardenPro India","areaServed":"Bengaluru"},"areaServed":{"@type":"City","name":"Bengaluru"},"description":"End-to-end garden design and setup for balcony, terrace, vertical and corporate gardens across Bengaluru, with before-and-after transformations."}
   </script>
 <style>
-  .hero-content { max-width: 1180px !important; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 3.5rem; align-items: center; }
+  .hero-content { max-width: 1180px !important; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1.05fr 0.92fr; gap: 3rem; align-items: center; }
   .hero-text { min-width: 0; }
-  .hero-collage { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 78px; gap: 12px; }
-  .hero-collage figure { position: relative; margin: 0; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
-  .hero-collage img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .hero-collage figcaption { position: absolute; bottom: 0; left: 0; right: 0; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: #fff; background: linear-gradient(transparent, rgba(0,0,0,0.7)); padding: 18px 10px 7px; }
+  .hero-collage { position: relative; display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 74px; gap: 8px; border-radius: 16px; overflow: hidden; box-shadow: 0 26px 70px rgba(0,0,0,0.5); }
+  .hero-collage figure { position: relative; margin: 0; overflow: hidden; }
+  .hero-collage img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.08) contrast(1.02); transition: transform 0.7s ease; }
+  .hero-collage figure:hover img { transform: scale(1.06); }
+  .hero-collage figcaption { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; font-family: var(--font-body); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; color: #fff; padding: 22px 10px 8px; background: linear-gradient(to top, rgba(10,26,16,0.9), transparent); }
   .hero-collage .c-tall { grid-row: span 3; }
+  .hero-collage figure:not(.c-tall) { grid-row: span 2; }
+  .hero-collage::after { content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
+    background:
+      linear-gradient(100deg, var(--green-deep) 0%, rgba(26,58,42,0.55) 12%, rgba(26,58,42,0) 34%),
+      radial-gradient(130% 120% at 100% 0%, rgba(26,58,42,0) 55%, rgba(15,36,23,0.55) 100%),
+      linear-gradient(200deg, rgba(201,168,76,0.10), rgba(26,58,42,0) 40%); }
   @media (max-width: 860px) {
-    .hero-content { grid-template-columns: 1fr !important; gap: 2rem; }
-    .hero-collage { grid-auto-rows: 88px; max-width: 520px; }
+    .hero-content { grid-template-columns: 1fr !important; gap: 2.25rem; }
+    .hero-collage { grid-auto-rows: 80px; max-width: 560px; margin: 0 auto; }
   }
 </style>
 </head>
@@ -377,11 +384,11 @@
     </div>
     </div><!-- /hero-text -->
     <div class="hero-collage" aria-hidden="true">
-      <figure class="c-tall"><img src="Garden%20Set%20up/setup2_after.jpg" alt="Terrace garden"><figcaption>Terrace Garden</figcaption></figure>
-      <figure><img src="Garden%20Set%20up/setup3_after.jpg" alt="Kitchen garden"><figcaption>Kitchen Garden</figcaption></figure>
-      <figure><img src="Garden%20Set%20up/setup4_after.jpg" alt="Balcony garden"><figcaption>Balcony Garden</figcaption></figure>
-      <figure class="c-tall"><img src="Garden%20Set%20up/setup5_after.jpg" alt="Vertical garden"><figcaption>Vertical Garden</figcaption></figure>
-      <figure><img src="Garden%20Set%20up/setup1_after.jpg" alt="Lawn"><figcaption>Lawn</figcaption></figure>
+      <figure class="c-tall"><img src="assets/stock/terrace.jpg" alt="Terrace garden"><figcaption>Terrace Garden</figcaption></figure>
+      <figure><img src="assets/stock/kitchen.jpg" alt="Kitchen herb garden"><figcaption>Kitchen Garden</figcaption></figure>
+      <figure><img src="assets/stock/balcony.jpg" alt="Balcony garden"><figcaption>Balcony Garden</figcaption></figure>
+      <figure class="c-tall"><img src="assets/stock/vertical.jpg" alt="Vertical living wall garden"><figcaption>Vertical Garden</figcaption></figure>
+      <figure><img src="assets/stock/lawn.jpg" alt="Landscaped lawn"><figcaption>Lawn &amp; Landscaping</figcaption></figure>
     </div>
   </div>
 </section>
