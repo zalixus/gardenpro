@@ -359,6 +359,40 @@
   }
   footer nav { position: static; top: auto; left: auto; right: auto; background: none; height: auto; padding: 0; border: none; z-index: auto; backdrop-filter: none; }
   </style>
+  <style>
+  /* ---- Promo offer + pricing card styling (see OFFER config in JS) ---- */
+  .freedom-banner { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: center; gap: 0.6rem; flex-wrap: wrap; text-align: center; padding: 0.5rem 1rem; background: linear-gradient(90deg,#FF9933 0%,#fff 50%,#138808 100%); color: #0f2417; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; line-height: 1.35; box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
+  .freedom-banner .fb-text strong { font-weight: 700; color: #0f2417; }
+  .freedom-banner s { color: #7a2a2a; opacity: 0.85; }
+  .freedom-banner .fb-off { background: #c0392b; color: #fff; font-weight: 700; padding: 1px 8px; border-radius: 10px; font-size: 0.72rem; }
+  .freedom-banner .fb-cta { background: #0f2417; color: #fff; font-weight: 600; padding: 5px 14px; border-radius: 4px; text-decoration: none; white-space: nowrap; }
+  .freedom-banner .fb-cta:hover { background: #138808; }
+
+  /* light readable cards + consistent CTAs */
+  #pricing .price-card { background: var(--white); border: 1px solid var(--sand); color: var(--text-dark); }
+  #pricing .plan-name { color: var(--green-fresh); }
+  #pricing .plan-price { color: var(--text-dark); }
+  #pricing .plan-cadence { color: var(--text-mid); }
+  #pricing .plan-visits { background: rgba(74,140,92,0.1); color: var(--green-fresh); }
+  #pricing .plan-features li { color: var(--text-dark); }
+  #pricing .plan-features li .chk { color: var(--green-fresh); }
+  #pricing .plan-features li.dim { opacity: 0.4; }
+  #pricing .price-card.featured { background: var(--white); border-color: var(--gold); }
+  #pricing .plan-save { min-height: 1.15rem; margin: 0.1rem 0 0.9rem; font-size: 0.78rem; font-weight: 600; color: #138808; }
+  #pricing .plan-cta { background: var(--terracotta); color: #fff; border: none; font-weight: 600; }
+  #pricing .plan-cta:hover { background: #b05e38; }
+
+  /* festive offer card (applied to the promo plan only when the offer is live) */
+  #pricing .freedom-card { position: relative; overflow: hidden; background-color: var(--white); background-image: url('assets/monstera-tricolor.svg'); background-repeat: no-repeat; background-position: right -22px bottom -22px; background-size: 175px; border: 1px solid var(--sand); box-shadow: 0 6px 22px rgba(26,58,42,0.10); }
+  #pricing .freedom-card::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background: linear-gradient(90deg,#FF9933 0%,#ffffff 50%,#138808 100%); }
+  #pricing .freedom-pct { position:absolute; top:16px; right:16px; width:76px; height:76px; border-radius:50%; background:#e8641e; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; line-height:1; box-shadow:0 5px 14px rgba(0,0,0,0.22); }
+  #pricing .freedom-pct .pct-num { font-family: var(--font-display); font-size: 1.55rem; font-weight: 700; }
+  #pricing .freedom-pct .pct-off { font-size: 0.58rem; letter-spacing: 0.12em; font-weight: 700; margin-top: 3px; }
+  .freedom-badge { display:inline-block; background: linear-gradient(90deg,#FF9933,#138808); color: #fff; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.03em; padding: 5px 10px; border-radius: 4px; margin-bottom: 0.75rem; }
+  .price-was { text-decoration: line-through; color: #c0392b; font-size: 1rem; font-weight: 500; margin-right: 4px; opacity: 0.85; }
+  .freedom-sub { font-size: 0.8rem; color: #138808; font-weight: 700; margin: 0.1rem 0 0.9rem; }
+  @media (max-width: 600px) { .freedom-banner { font-size: 0.76rem; padding: 0.45rem 0.7rem; gap: 0.4rem; } .freedom-banner .fb-cta { padding: 4px 10px; } }
+  </style>
 </head>
 <body>
 
@@ -545,14 +579,15 @@
   <p class="section-sub">All plans include the full 4-stage visit process. Choose how often you want us. Save more with quarterly or half-yearly commitment.</p>
   <div class="pricing-toggle">
     <button class="ptoggle-btn active" onclick="setPricing('monthly')">Monthly</button>
-    <button class="ptoggle-btn" onclick="setPricing('quarterly')">Quarterly <span class="discount-badge">Save 10%</span></button>
-    <button class="ptoggle-btn" onclick="setPricing('halfyearly')">Half-Yearly <span class="discount-badge">Save 15%</span></button>
+    <button class="ptoggle-btn" onclick="setPricing('quarterly')">Quarterly</button>
+    <button class="ptoggle-btn" onclick="setPricing('halfyearly')">Half-Yearly</button>
   </div>
   <div class="pricing-grid">
     <!-- SILVER -->
     <div class="price-card">
       <div class="plan-name">Silver</div>
       <div class="plan-price" id="price-silver"><sup>₹</sup>2,999<sub>/mo</sub></div>
+      <div class="plan-save" id="save-silver"></div>
       <div class="plan-cadence">1 visit per month · up to 2 hrs</div>
       <div class="plan-visits">🗓 1 visit/month</div>
       <ul class="plan-features">
@@ -570,6 +605,7 @@
       <div class="popular-badge">Most Popular</div>
       <div class="plan-name">Gold</div>
       <div class="plan-price" id="price-gold"><sup>₹</sup>5,499<sub>/mo</sub></div>
+      <div class="plan-save" id="save-gold"></div>
       <div class="plan-cadence" style="color:var(--text-mid)">2 visits per month · up to 2 hrs each</div>
       <div class="plan-visits">🗓 2 visits/month</div>
       <ul class="plan-features">
@@ -586,6 +622,7 @@
     <div class="price-card">
       <div class="plan-name">Platinum</div>
       <div class="plan-price" id="price-platinum"><sup>₹</sup>8,999<sub>/mo</sub></div>
+      <div class="plan-save" id="save-platinum"></div>
       <div class="plan-cadence">4 visits per month · up to 2 hrs each</div>
       <div class="plan-visits">🗓 4 visits/month (weekly)</div>
       <ul class="plan-features">
@@ -825,9 +862,15 @@
     event.currentTarget.classList.add('active');
     const p = PRICES[period];
     const c = CADENCE[period];
-    document.getElementById('price-silver').innerHTML = `<sup>₹</sup>${p.silver}<sub>${c}</sub>`;
+    var freedom = document.documentElement.classList.contains('freedom-on');
+    if (window.renderSilver && freedom) { window.renderSilver(period); }
+    else { document.getElementById('price-silver').innerHTML = `<sup>₹</sup>${p.silver}<sub>${c}</sub>`; }
     document.getElementById('price-gold').innerHTML = `<sup>₹</sup>${p.gold}<sub>${c}</sub>`;
     document.getElementById('price-platinum').innerHTML = `<sup>₹</sup>${p.platinum}<sub>${c}</sub>`;
+    var sv = { monthly: '', quarterly: 'Save 10%', halfyearly: 'Save 15%' }[period] || '';
+    var sg = document.getElementById('save-gold'); if (sg) sg.textContent = sv;
+    var sp = document.getElementById('save-platinum'); if (sp) sp.textContent = sv;
+    var ss = document.getElementById('save-silver'); if (ss) ss.textContent = freedom ? '' : sv;
   }
 
   // Pre-fill plan from pricing CTA
@@ -864,6 +907,71 @@
       window.open('https://wa.me/917561066345?text=' + encodeURIComponent(msg), '_blank');
     }, 400);
   }
+</script>
+<script>
+/* =====================================================================
+   MAINTENANCE PROMO OFFER  —  edit this OFFER block to run a new campaign.
+   • enabled:false turns the offer off instantly.
+   • endDate: the offer AUTO-REVERTS to normal pricing on this date.
+       (month is 0-indexed: 0=Jan ... 7=Aug). Below = 20 Aug 2026.
+   • Applies to the SILVER plan card + the top banner.
+   Everything the customer sees for the promo is driven from this object.
+   ===================================================================== */
+var OFFER = {
+  enabled: true,
+  endDate: new Date(2026, 7, 20, 0, 0, 0),
+  badge: '🇮🇳 Freedom Package',
+  bannerText: '🇮🇳 <strong>Independence Day Special</strong> · Freedom Package: Silver from <strong>₹1,899/mo</strong> <s>₹2,999</s> <span class="fb-off">37% OFF</span>',
+  bannerCta: 'View Plans →',
+  bannerHref: '#pricing',
+  bookingLabel: '🥈 Freedom Package',
+  bookingValue: 'Freedom Package (Silver), ₹1,899/mo',
+  /* Silver pricing while the promo runs. "was" = struck full price. */
+  pricing: {
+    monthly:    { was: '2,999', mo: '1,899', off: '37', sub: 'you save ₹1,100' },
+    quarterly:  { was: '2,999', mo: '1,699', off: '43', sub: 'billed ₹5,097 for 3 months · you save ₹3,900' },
+    halfyearly: { was: '2,999', mo: '1,499', off: '50', sub: 'billed ₹8,994 for 6 months · you save ₹9,000' }
+  }
+};
+
+(function(){
+  if (!OFFER.enabled || new Date() >= OFFER.endDate) return;  // offer over -> normal page
+
+  window.renderSilver = function(period){
+    var d = OFFER.pricing[period] || OFFER.pricing.monthly;
+    var el = document.getElementById('price-silver');
+    if (el) el.innerHTML = '<span class="price-was">₹' + d.was + '</span> <sup>₹</sup>' + d.mo + '<sub>/mo</sub>';
+    var sub = document.getElementById('freedomSub'); if (sub) sub.textContent = d.sub;
+    var pct = document.querySelector('#freedomPct .pct-num'); if (pct) pct.textContent = d.off + '%';
+  };
+  function buildBanner(){
+    if (document.getElementById('freedomBanner')) return;
+    var bar = document.createElement('div');
+    bar.id = 'freedomBanner'; bar.className = 'freedom-banner';
+    bar.setAttribute('role','region'); bar.setAttribute('aria-label','Special offer');
+    bar.innerHTML = '<span class="fb-text">' + OFFER.bannerText + '</span> <a href="' + OFFER.bannerHref + '" class="fb-cta">' + OFFER.bannerCta + '</a>';
+    document.body.insertBefore(bar, document.body.firstChild);
+  }
+  function sync(){ var b=document.getElementById('freedomBanner'); if(!b) return; var h=b.offsetHeight; document.body.style.paddingTop=h+'px'; var nav=document.querySelector('nav'); if(nav) nav.style.top=h+'px'; }
+  function init(){
+    document.documentElement.classList.add('freedom-on');
+    buildBanner(); sync();
+    var priceEl = document.getElementById('price-silver');
+    var card = priceEl && priceEl.closest('.price-card');
+    if (card && !card.querySelector('.freedom-badge')) {
+      card.classList.add('freedom-card');
+      var badge = document.createElement('div'); badge.className='freedom-badge'; badge.textContent=OFFER.badge; card.insertBefore(badge, card.firstChild);
+      var sub = document.createElement('div'); sub.className='freedom-sub'; sub.id='freedomSub'; priceEl.insertAdjacentElement('afterend', sub);
+      var pc = document.createElement('div'); pc.className='freedom-pct'; pc.id='freedomPct'; pc.innerHTML='<span class="pct-num"></span><span class="pct-off">OFF</span>'; card.appendChild(pc);
+      var ss = document.getElementById('save-silver'); if (ss) ss.style.display='none';
+    }
+    window.renderSilver('monthly');
+    var radio = document.getElementById('planPrefill');
+    if (radio) { radio.value = OFFER.bookingValue; var span = radio.parentElement && radio.parentElement.querySelector('span'); if (span) span.textContent = OFFER.bookingLabel; }
+  }
+  window.addEventListener('resize', sync);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
 </script>
 </body>
 </html>
