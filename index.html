@@ -211,6 +211,11 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--green-pale); }
+    .nav-hamburger { display: none; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; background: none; border: none; cursor: pointer; padding: 0; }
+    .nav-hamburger span { display: block; height: 2px; width: 100%; background: var(--green-pale); border-radius: 2px; transition: all 0.25s; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
     .nav-cta {
       background: var(--terracotta);
       color: white !important;
@@ -906,7 +911,9 @@
     .guarantee-card { border-color: rgba(201,168,76,0.3); }
 
     @media (max-width: 768px) {
-      .nav-links { display: none; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: rgba(26,58,42,0.98); padding: 1rem 5vw 1.5rem; gap: 1rem; border-bottom: 1px solid rgba(122,184,144,0.2); }
+      .nav-links.open { display: flex; }
+      .nav-hamburger { display: flex; }
       nav { padding: 0 4vw; }
       .hero { padding: 80px 5vw 3rem; min-height: auto; }
       .hero h1 { font-size: 2.2rem; }
@@ -953,7 +960,10 @@
 <!-- NAV -->
 <nav aria-label="Main navigation">
   <a class="nav-logo" href="/" aria-label="GardenPro Solutions Home">Garden<span>Pro</span></a>
-  <ul class="nav-links" role="list">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks" role="list">
     <li><a href="#services">Services</a></li>
     <li><a href="#why">Why Us</a></li>
     <li><a href="#temple">Temple Tree</a></li>
@@ -1406,5 +1416,22 @@
   });
 </script>
 
+<script>
+  function toggleNav() {
+    var btn = document.getElementById('navHamburger');
+    var links = document.getElementById('navLinks');
+    var open = links.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  document.querySelectorAll('.nav-links a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      document.getElementById('navLinks').classList.remove('open');
+      var b = document.getElementById('navHamburger');
+      b.classList.remove('open');
+      b.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
 </body>
 </html>

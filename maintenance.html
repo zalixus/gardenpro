@@ -356,7 +356,7 @@
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="/">Garden<span>Pro</span></a>
-  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" onclick="toggleNav()">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false" onclick="toggleNav()">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="navLinks" role="list">
@@ -777,8 +777,9 @@
   function toggleNav() {
     const btn = document.getElementById('navHamburger');
     const links = document.getElementById('navLinks');
-    btn.classList.toggle('open');
-    links.classList.toggle('open');
+    const open = links.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
   document.querySelectorAll('.nav-links a').forEach(a => {
     a.addEventListener('click', () => {

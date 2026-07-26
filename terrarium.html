@@ -97,6 +97,11 @@
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { color: rgba(212,234,216,0.8); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--green-pale); }
+    .nav-hamburger { display: none; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; background: none; border: none; cursor: pointer; padding: 0; }
+    .nav-hamburger span { display: block; height: 2px; width: 100%; background: var(--green-pale); border-radius: 2px; transition: all 0.25s; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
     .nav-cta { background: var(--terracotta) !important; color: white !important; padding: 0.45rem 1.1rem; border-radius: 2px; }
     .nav-cta:hover { background: #b05e38 !important; }
     .nav-phone { color: var(--gold) !important; font-size: 0.82rem !important; letter-spacing: 0.04em !important; text-transform: none !important; font-weight: 500 !important; }
@@ -274,7 +279,9 @@
     .wa-float:hover { transform: scale(1.1); }
     .wa-float svg { width: 28px; height: 28px; }
     @media (max-width: 768px) {
-      .nav-links { display: none; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: rgba(26,58,42,0.98); padding: 1rem 5vw 1.5rem; gap: 1rem; border-bottom: 1px solid rgba(122,184,144,0.2); }
+      .nav-links.open { display: flex; }
+      .nav-hamburger { display: flex; }
       .process-flow { grid-template-columns: 1fr; }
       .process-arrow { display: none; }
       .contact-wrapper { grid-template-columns: 1fr; }
@@ -298,6 +305,9 @@
 <!-- NAV -->
 <nav role="navigation" aria-label="Main navigation">
   <a href="/" class="nav-logo">Garden<span>Pro</span></a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links" id="navLinks" role="list">
     <li><a href="/">Home</a></li>
     <li><a href="/#services">Services</a></li>
@@ -580,6 +590,23 @@
   });
 </script>
 
+<script>
+  function toggleNav() {
+    var btn = document.getElementById('navHamburger');
+    var links = document.getElementById('navLinks');
+    var open = links.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  document.querySelectorAll('.nav-links a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      document.getElementById('navLinks').classList.remove('open');
+      var b = document.getElementById('navHamburger');
+      b.classList.remove('open');
+      b.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
 </body>
 </html>
 
