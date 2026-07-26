@@ -360,7 +360,7 @@
   footer nav { position: static; top: auto; left: auto; right: auto; background: none; height: auto; padding: 0; border: none; z-index: auto; backdrop-filter: none; }
   </style>
   <style>
-  /* ---- Independence Day Freedom Package + pricing redesign ---- */
+  /* ---- Independence Day Freedom Package ---- */
   .freedom-banner { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: center; gap: 0.6rem; flex-wrap: wrap; text-align: center; padding: 0.5rem 1rem; background: linear-gradient(90deg,#FF9933 0%,#fff 50%,#138808 100%); color: #0f2417; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; line-height: 1.35; box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
   .freedom-banner .fb-text strong { font-weight: 700; color: #0f2417; }
   .freedom-banner s { color: #7a2a2a; opacity: 0.85; }
@@ -368,7 +368,7 @@
   .freedom-banner .fb-cta { background: #0f2417; color: #fff; font-weight: 600; padding: 5px 14px; border-radius: 4px; text-decoration: none; white-space: nowrap; }
   .freedom-banner .fb-cta:hover { background: #138808; }
 
-  /* cards: light + readable + consistent */
+  /* light readable cards */
   #pricing .price-card { background: var(--white); border: 1px solid var(--sand); color: var(--text-dark); }
   #pricing .plan-name { color: var(--green-fresh); }
   #pricing .plan-price { color: var(--text-dark); }
@@ -377,20 +377,20 @@
   #pricing .plan-features li { color: var(--text-dark); }
   #pricing .plan-features li .chk { color: var(--green-fresh); }
   #pricing .plan-features li.dim { opacity: 0.4; }
-  #pricing .plan-cta-ghost { color: var(--green-mid); border: 1px solid var(--sand); background: transparent; }
-  #pricing .plan-cta-ghost:hover { border-color: var(--green-fresh); }
   #pricing .price-card.featured { background: var(--white); border-color: var(--gold); }
   #pricing .plan-save { min-height: 1.15rem; margin: 0.1rem 0 0.9rem; font-size: 0.78rem; font-weight: 600; color: #138808; }
+  /* all Choose buttons same terracotta */
+  #pricing .plan-cta { background: var(--terracotta); color: #fff; border: none; font-weight: 600; }
+  #pricing .plan-cta:hover { background: #b05e38; }
 
   /* Silver = festive Independence Freedom Package */
-  #pricing .freedom-card { position: relative; overflow: hidden; background: linear-gradient(165deg,#ffffff 0%,#ffffff 55%,rgba(255,153,51,0.10) 78%,rgba(19,136,8,0.12) 100%); border: 1px solid #bfe0c4; box-shadow: 0 6px 22px rgba(19,136,8,0.14); }
+  #pricing .freedom-card { position: relative; overflow: hidden; background-color: var(--white); background-image: url('assets/monstera-tricolor.svg'); background-repeat: no-repeat; background-position: right -22px bottom -22px; background-size: 175px; border: 1px solid var(--sand); box-shadow: 0 6px 22px rgba(26,58,42,0.10); }
   #pricing .freedom-card::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background: linear-gradient(90deg,#FF9933 0%,#ffffff 50%,#138808 100%); }
-  #pricing .freedom-card::after { content:'🌿'; position:absolute; right:12px; bottom:10px; font-size:1.5rem; opacity:0.16; }
-  #pricing .freedom-card .plan-cta { background:#138808; color:#fff; border:none; font-weight:600; }
-  #pricing .freedom-card .plan-cta:hover { background:#0f6b06; }
-  .freedom-badge { display:inline-block; background: linear-gradient(90deg,#FF9933,#138808); color: #fff; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.03em; text-align: center; padding: 5px 10px; border-radius: 4px; margin-bottom: 0.75rem; }
+  #pricing .freedom-pct { position:absolute; top:16px; right:16px; width:76px; height:76px; border-radius:50%; background:#e8641e; color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; line-height:1; box-shadow:0 5px 14px rgba(0,0,0,0.22); }
+  #pricing .freedom-pct .pct-num { font-family: var(--font-display); font-size: 1.55rem; font-weight: 700; }
+  #pricing .freedom-pct .pct-off { font-size: 0.58rem; letter-spacing: 0.12em; font-weight: 700; margin-top: 3px; }
+  .freedom-badge { display:inline-block; background: linear-gradient(90deg,#FF9933,#138808); color: #fff; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.03em; padding: 5px 10px; border-radius: 4px; margin-bottom: 0.75rem; }
   .price-was { text-decoration: line-through; color: #c0392b; font-size: 1rem; font-weight: 500; margin-right: 4px; opacity: 0.85; }
-  .freedom-off { background: #c0392b; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; vertical-align: middle; margin-left: 6px; }
   .freedom-sub { font-size: 0.8rem; color: #138808; font-weight: 700; margin: 0.1rem 0 0.9rem; }
   @media (max-width: 600px) { .freedom-banner { font-size: 0.76rem; padding: 0.45rem 0.7rem; gap: 0.4rem; } .freedom-banner .fb-cta { padding: 4px 10px; } }
   </style>
@@ -924,9 +924,9 @@
   window.renderSilver = function(period){
     var d = DATA[period] || DATA.monthly;
     var el = document.getElementById('price-silver');
-    if (el) el.innerHTML = '<span class="price-was">\u20b9'+d.was+'</span> <sup>\u20b9</sup>'+d.mo+'<sub>/mo</sub> <span class="freedom-off">'+d.off+'% OFF</span>';
-    var sub = document.getElementById('freedomSub');
-    if (sub) sub.textContent = d.sub;
+    if (el) el.innerHTML = '<span class="price-was">\u20b9'+d.was+'</span> <sup>\u20b9</sup>'+d.mo+'<sub>/mo</sub>';
+    var sub = document.getElementById('freedomSub'); if (sub) sub.textContent = d.sub;
+    var pct = document.querySelector('#freedomPct .pct-num'); if (pct) pct.textContent = d.off + '%';
   };
   function sync(){ var b=document.getElementById('freedomBanner'); if(!b) return; var h=b.offsetHeight; document.body.style.paddingTop=h+'px'; var nav=document.querySelector('nav'); if(nav) nav.style.top=h+'px'; }
   function init(){
@@ -938,6 +938,7 @@
       card.classList.add('freedom-card');
       var badge=document.createElement('div'); badge.className='freedom-badge'; badge.textContent='\ud83c\uddee\ud83c\uddf3 Freedom Package'; card.insertBefore(badge, card.firstChild);
       var sub=document.createElement('div'); sub.className='freedom-sub'; sub.id='freedomSub'; priceEl.insertAdjacentElement('afterend', sub);
+      var pc=document.createElement('div'); pc.className='freedom-pct'; pc.id='freedomPct'; pc.innerHTML='<span class="pct-num">37%</span><span class="pct-off">OFF</span>'; card.appendChild(pc);
     }
     window.renderSilver('monthly');
     var radio=document.getElementById('planPrefill');
