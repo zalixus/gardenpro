@@ -360,18 +360,36 @@
   footer nav { position: static; top: auto; left: auto; right: auto; background: none; height: auto; padding: 0; border: none; z-index: auto; backdrop-filter: none; }
   </style>
   <style>
-  /* Independence Day Freedom Package offer */
+  /* ---- Independence Day Freedom Package + pricing redesign ---- */
   .freedom-banner { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: center; gap: 0.6rem; flex-wrap: wrap; text-align: center; padding: 0.5rem 1rem; background: linear-gradient(90deg,#FF9933 0%,#fff 50%,#138808 100%); color: #0f2417; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; line-height: 1.35; box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
   .freedom-banner .fb-text strong { font-weight: 700; color: #0f2417; }
   .freedom-banner s { color: #7a2a2a; opacity: 0.85; }
   .freedom-banner .fb-off { background: #c0392b; color: #fff; font-weight: 700; padding: 1px 8px; border-radius: 10px; font-size: 0.72rem; }
   .freedom-banner .fb-cta { background: #0f2417; color: #fff; font-weight: 600; padding: 5px 14px; border-radius: 4px; text-decoration: none; white-space: nowrap; }
   .freedom-banner .fb-cta:hover { background: #138808; }
-  .freedom-badge { background: linear-gradient(90deg,#FF9933,#138808); color: #fff; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.03em; text-align: center; padding: 5px 8px; border-radius: 4px; margin-bottom: 0.75rem; }
+
+  /* cards: light + readable + consistent */
+  #pricing .price-card { background: var(--white); border: 1px solid var(--sand); color: var(--text-dark); }
+  #pricing .plan-name { color: var(--green-fresh); }
+  #pricing .plan-price { color: var(--text-dark); }
+  #pricing .plan-cadence { color: var(--text-mid); }
+  #pricing .plan-visits { background: rgba(74,140,92,0.1); color: var(--green-fresh); }
+  #pricing .plan-features li { color: var(--text-dark); }
+  #pricing .plan-features li .chk { color: var(--green-fresh); }
+  #pricing .plan-features li.dim { opacity: 0.4; }
+  #pricing .plan-cta-ghost { color: var(--green-mid); border: 1px solid var(--sand); background: transparent; }
+  #pricing .plan-cta-ghost:hover { border-color: var(--green-fresh); }
+  #pricing .price-card.featured { background: var(--white); border-color: var(--gold); }
+  #pricing .plan-save { min-height: 1.15rem; margin: 0.1rem 0 0.9rem; font-size: 0.78rem; font-weight: 600; color: #138808; }
+
+  /* Silver = festive Independence Freedom Package */
+  #pricing .freedom-card { position: relative; overflow: hidden; background: linear-gradient(165deg,#ffffff 0%,#ffffff 55%,rgba(255,153,51,0.10) 78%,rgba(19,136,8,0.12) 100%); border: 1px solid #bfe0c4; box-shadow: 0 6px 22px rgba(19,136,8,0.14); }
+  #pricing .freedom-card::before { content:''; position:absolute; top:0; left:0; right:0; height:5px; background: linear-gradient(90deg,#FF9933 0%,#ffffff 50%,#138808 100%); }
+  #pricing .freedom-card::after { content:'🌿'; position:absolute; right:12px; bottom:10px; font-size:1.5rem; opacity:0.16; }
+  .freedom-badge { display:inline-block; background: linear-gradient(90deg,#FF9933,#138808); color: #fff; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.03em; text-align: center; padding: 5px 10px; border-radius: 4px; margin-bottom: 0.75rem; }
   .price-was { text-decoration: line-through; color: #c0392b; font-size: 1rem; font-weight: 500; margin-right: 4px; opacity: 0.85; }
   .freedom-off { background: #c0392b; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; vertical-align: middle; margin-left: 6px; }
-  .freedom-sub { font-size: 0.8rem; color: #138808; font-weight: 600; margin-top: 4px; }
-  .freedom-card { outline: 2px solid #138808; outline-offset: 2px; }
+  .freedom-sub { font-size: 0.8rem; color: #138808; font-weight: 700; margin: 0.1rem 0 0.9rem; }
   @media (max-width: 600px) { .freedom-banner { font-size: 0.76rem; padding: 0.45rem 0.7rem; gap: 0.4rem; } .freedom-banner .fb-cta { padding: 4px 10px; } }
   </style>
 </head>
@@ -565,8 +583,8 @@
   <p class="section-sub">All plans include the full 4-stage visit process. Choose how often you want us. Save more with quarterly or half-yearly commitment.</p>
   <div class="pricing-toggle">
     <button class="ptoggle-btn active" onclick="setPricing('monthly')">Monthly</button>
-    <button class="ptoggle-btn" onclick="setPricing('quarterly')">Quarterly <span class="discount-badge">Save 10%</span></button>
-    <button class="ptoggle-btn" onclick="setPricing('halfyearly')">Half-Yearly <span class="discount-badge">Save 15%</span></button>
+    <button class="ptoggle-btn" onclick="setPricing('quarterly')">Quarterly</button>
+    <button class="ptoggle-btn" onclick="setPricing('halfyearly')">Half-Yearly</button>
   </div>
   <div class="pricing-grid">
     <!-- SILVER -->
@@ -590,6 +608,7 @@
       <div class="popular-badge">Most Popular</div>
       <div class="plan-name">Gold</div>
       <div class="plan-price" id="price-gold"><sup>₹</sup>5,499<sub>/mo</sub></div>
+      <div class="plan-save" id="save-gold"></div>
       <div class="plan-cadence" style="color:var(--text-mid)">2 visits per month · up to 2 hrs each</div>
       <div class="plan-visits">🗓 2 visits/month</div>
       <ul class="plan-features">
@@ -606,6 +625,7 @@
     <div class="price-card">
       <div class="plan-name">Platinum</div>
       <div class="plan-price" id="price-platinum"><sup>₹</sup>8,999<sub>/mo</sub></div>
+      <div class="plan-save" id="save-platinum"></div>
       <div class="plan-cadence">4 visits per month · up to 2 hrs each</div>
       <div class="plan-visits">🗓 4 visits/month (weekly)</div>
       <ul class="plan-features">
@@ -845,9 +865,13 @@
     event.currentTarget.classList.add('active');
     const p = PRICES[period];
     const c = CADENCE[period];
-    if (window.renderSilver && document.documentElement.classList.contains('freedom-on')) { window.renderSilver(period); } else { document.getElementById('price-silver').innerHTML = `<sup>₹</sup>${p.silver}<sub>${c}</sub>`; }
+    if (window.renderSilver && document.documentElement.classList.contains('freedom-on')) { window.renderSilver(period); }
+    else { document.getElementById('price-silver').innerHTML = `<sup>₹</sup>${p.silver}<sub>${c}</sub>`; }
     document.getElementById('price-gold').innerHTML = `<sup>₹</sup>${p.gold}<sub>${c}</sub>`;
     document.getElementById('price-platinum').innerHTML = `<sup>₹</sup>${p.platinum}<sub>${c}</sub>`;
+    var sv = { monthly: '', quarterly: 'Save 10%', halfyearly: 'Save 15%' }[period] || '';
+    var sg = document.getElementById('save-gold'); if (sg) sg.textContent = sv;
+    var sp = document.getElementById('save-platinum'); if (sp) sp.textContent = sv;
   }
 
   // Pre-fill plan from pricing CTA
@@ -886,7 +910,7 @@
   }
 </script>
 <script>
-/* Independence Day "Freedom Package" (Silver). Discounts vs full standard price. Auto-hides after 2026-08-21. */
+/* Independence Day "Freedom Package" (Silver). Auto-hides after 2026-08-21. */
 (function(){
   var OFFER_END = new Date(2026, 7, 21, 0, 0, 0);
   if (new Date() >= OFFER_END) return;
