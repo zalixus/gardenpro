@@ -309,11 +309,18 @@
   footer nav { position: static; top: auto; left: auto; right: auto; background: none; height: auto; padding: 0; border: none; z-index: auto; backdrop-filter: none; }
   </style>
   <style>
-  #faq { padding: 4.5rem 5vw; background: var(--cream); }
-  #faq .faq-list { max-width: 760px; margin: 2rem auto 0; }
-  #faq .faq-item { border-bottom: 1px solid var(--sand); padding: 1.1rem 0; }
-  #faq .faq-item h3 { font-size: 1.02rem; color: var(--green-deep); margin-bottom: 0.4rem; }
-  #faq .faq-item p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.65; }
+  #faq { background: var(--green-deep); padding: 4.5rem 5vw; }
+  #faq .section-heading { color: var(--green-pale); }
+  #faq .section-label { color: var(--green-light); }
+  .faq-list { margin-top: 2rem; max-width: 760px; margin-left: auto; margin-right: auto; }
+  .faq-item { border-bottom: 1px solid rgba(212,234,216,0.14); }
+  .faq-q { width: 100%; background: none; border: none; text-align: left; padding: 1.1rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-family: var(--font-body); font-size: 0.95rem; font-weight: 500; color: var(--green-pale); }
+  .faq-q:hover { color: var(--green-light); }
+  .faq-icon { color: var(--gold); font-size: 1.3rem; flex-shrink: 0; transition: transform 0.25s; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s; }
+  .faq-item.open .faq-a { max-height: 400px; padding-bottom: 1rem; }
+  .faq-a p { font-size: 0.9rem; color: rgba(212,234,216,0.7); line-height: 1.75; }
   </style>
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does a custom terrarium cost in Bengaluru?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the size, the container and the plants or aquascape design you choose. Tell us your space and budget and we'll recommend options and share a quote."}}, {"@type": "Question", "name": "Do you make terrariums for gifting or for offices?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Custom terrariums make great corporate and personal gifts, and we build low-maintenance terrariums and green corners for offices across Bengaluru."}}, {"@type": "Question", "name": "What is aquascaping?", "acceptedAnswer": {"@type": "Answer", "text": "Aquascaping is the art of designing a planted aquarium, arranging aquatic plants, stone and driftwood into a living underwater landscape."}}, {"@type": "Question", "name": "Do you set up aquariums and aquascapes in Bengaluru?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, we design and install custom aquariums, planted tanks and aquascapes for homes and offices across Bengaluru, with care guidance included."}}]}
@@ -452,14 +459,14 @@
 
 <!-- CONTACT -->
 <section id="faq" aria-labelledby="faq-heading">
-  <div class="section-label" style="text-align:center">Terrarium & Aquascaping FAQs</div>
-  <h2 class="section-heading" id="faq-heading" style="text-align:center">Terrariums and aquascaping in Bengaluru: your questions</h2>
+  <div class="section-label">Terrarium & Aquascaping FAQs</div>
+  <h2 class="section-heading" id="faq-heading">Terrariums and aquascaping in Bengaluru: your questions</h2>
   <div class="faq-list">
-    <div class="faq-item"><h3>How much does a custom terrarium cost in Bengaluru?</h3><p>It depends on the size, the container and the plants or aquascape design you choose. Tell us your space and budget and we'll recommend options and share a quote.</p></div>
-    <div class="faq-item"><h3>Do you make terrariums for gifting or for offices?</h3><p>Yes. Custom terrariums make great corporate and personal gifts, and we build low-maintenance terrariums and green corners for offices across Bengaluru.</p></div>
-    <div class="faq-item"><h3>What is aquascaping?</h3><p>Aquascaping is the art of designing a planted aquarium, arranging aquatic plants, stone and driftwood into a living underwater landscape.</p></div>
-    <div class="faq-item"><h3>Do you set up aquariums and aquascapes in Bengaluru?</h3><p>Yes, we design and install custom aquariums, planted tanks and aquascapes for homes and offices across Bengaluru, with care guidance included.</p></div>
-    </div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">How much does a custom terrarium cost in Bengaluru? <span class="faq-icon">+</span></button><div class="faq-a"><p>It depends on the size, the container and the plants or aquascape design you choose. Tell us your space and budget and we'll recommend options and share a quote.</p></div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">Do you make terrariums for gifting or for offices? <span class="faq-icon">+</span></button><div class="faq-a"><p>Yes. Custom terrariums make great corporate and personal gifts, and we build low-maintenance terrariums and green corners for offices across Bengaluru.</p></div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">What is aquascaping? <span class="faq-icon">+</span></button><div class="faq-a"><p>Aquascaping is the art of designing a planted aquarium, arranging aquatic plants, stone and driftwood into a living underwater landscape.</p></div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">Do you set up aquariums and aquascapes in Bengaluru? <span class="faq-icon">+</span></button><div class="faq-a"><p>Yes, we design and install custom aquariums, planted tanks and aquascapes for homes and offices across Bengaluru, with care guidance included.</p></div></div>
+  </div>
 </section>
 
 <section id="contact" aria-labelledby="contact-heading">
@@ -635,6 +642,16 @@
       var b = document.getElementById('navHamburger');
       b.classList.remove('open');
       b.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+<script>
+  document.querySelectorAll('.faq-q').forEach(function(q){
+    q.addEventListener('click', function(){
+      var item=q.closest('.faq-item'); var open=item.classList.contains('open');
+      document.querySelectorAll('#faq .faq-item').forEach(function(i){ i.classList.remove('open'); });
+      if(!open) item.classList.add('open');
+      q.setAttribute('aria-expanded', String(!open));
     });
   });
 </script>
