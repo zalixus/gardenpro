@@ -6,4 +6,7 @@ Disallow: /maintenance_1.html
 Disallow: /Garden%20Set%20Up%20Landing%20Page.html
 Disallow: /Terrarium%20Landing%20Page.html
 
+# Internal reference doc — not for search results
+Disallow: /google-ads-plan.md
+
 Sitemap: https://gardenpro.in/sitemap.xml
