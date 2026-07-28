@@ -352,6 +352,23 @@
   }
   footer nav { position: static; top: auto; left: auto; right: auto; background: none; height: auto; padding: 0; border: none; z-index: auto; backdrop-filter: none; }
   </style>
+  <style>
+  #faq { background: var(--green-deep); padding: 4.5rem 5vw; }
+  #faq .section-heading { color: var(--green-pale); }
+  #faq .section-label { color: var(--green-light); }
+  .faq-list { margin-top: 2rem; max-width: 760px; margin-left: auto; margin-right: auto; }
+  .faq-item { border-bottom: 1px solid rgba(212,234,216,0.14); }
+  .faq-q { width: 100%; background: none; border: none; text-align: left; padding: 1.1rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-family: var(--font-body); font-size: 0.95rem; font-weight: 500; color: var(--green-pale); }
+  .faq-q:hover { color: var(--green-light); }
+  .faq-icon { color: var(--gold); font-size: 1.3rem; flex-shrink: 0; transition: transform 0.25s; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s; }
+  .faq-item.open .faq-a { max-height: 400px; padding-bottom: 1rem; }
+  .faq-a p { font-size: 0.9rem; color: rgba(212,234,216,0.7); line-height: 1.75; }
+  </style>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does garden setup cost in Bengaluru?", "acceptedAnswer": {"@type": "Answer", "text": "Garden setup cost depends on the size of the space, the plants, and any structures like planters, vertical panels or irrigation. After a quick site inspection we give you a clear, itemised quote with no hidden charges."}}, {"@type": "Question", "name": "Do you do balcony, terrace and villa garden setups?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We design and set up balcony gardens, terrace gardens, villa gardens, vertical and green walls, kitchen gardens and office gardens across Bengaluru."}}, {"@type": "Question", "name": "How long does a garden setup take?", "acceptedAnswer": {"@type": "Answer", "text": "Once the design and plants are confirmed, most garden setups are completed in 1 to 3 days, depending on the scale of the project."}}, {"@type": "Question", "name": "Do you set up gardens for offices and corporate spaces?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. We create and install office gardens, lobby greenery and corporate living walls alongside home and balcony gardens."}}]}
+  </script>
 </head>
 <body>
 
@@ -379,7 +396,7 @@
     <div class="hero-text">
     <div class="hero-badge">Real Projects · Real Results · Bengaluru</div>
     <h1 id="hero-heading">We turn <em>empty spaces</em><br>into living gardens</h1>
-    <p>From bare balconies to corporate living walls. See exactly how we work, what the process looks like, and the results we deliver for homeowners and businesses across Bengaluru.</p>
+    <p>Professional garden setup in Bengaluru for balconies, terraces, villas and offices. See exactly how we work, our process, and the real before-and-after results we deliver for homes and businesses.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Book Your First Site Inspection Visit @ ₹499 →</a>
       <a href="#portfolio" class="btn-ghost">See Our Work</a>
@@ -509,6 +526,17 @@
 </section>
 
 <!-- CONTACT -->
+<section id="faq" aria-labelledby="faq-heading">
+  <div class="section-label">Garden Setup FAQs</div>
+  <h2 class="section-heading" id="faq-heading">Garden setup in Bengaluru: your questions</h2>
+  <div class="faq-list">
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">How much does garden setup cost in Bengaluru? <span class="faq-icon">+</span></button><div class="faq-a"><p>Garden setup cost depends on the size of the space, the plants, and any structures like planters, vertical panels or irrigation. After a quick site inspection we give you a clear, itemised quote with no hidden charges.</p></div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">Do you do balcony, terrace and villa garden setups? <span class="faq-icon">+</span></button><div class="faq-a"><p>Yes. We design and set up balcony gardens, terrace gardens, villa gardens, vertical and green walls, kitchen gardens and office gardens across Bengaluru.</p></div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">How long does a garden setup take? <span class="faq-icon">+</span></button><div class="faq-a"><p>Once the design and plants are confirmed, most garden setups are completed in 1 to 3 days, depending on the scale of the project.</p></div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">Do you set up gardens for offices and corporate spaces? <span class="faq-icon">+</span></button><div class="faq-a"><p>Absolutely. We create and install office gardens, lobby greenery and corporate living walls alongside home and balcony gardens.</p></div></div>
+  </div>
+</section>
+
 <section id="contact" aria-labelledby="contact-heading">
   <div class="section-label" style="text-align:center">Get in Touch</div>
   <h2 class="section-heading" style="text-align:center;color:var(--green-pale)" id="contact-heading">Book your first visit</h2>
@@ -774,6 +802,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 renderCards();
+</script>
+<script>
+  document.querySelectorAll('.faq-q').forEach(function(q){
+    q.addEventListener('click', function(){
+      var item=q.closest('.faq-item'); var open=item.classList.contains('open');
+      document.querySelectorAll('#faq .faq-item').forEach(function(i){ i.classList.remove('open'); });
+      if(!open) item.classList.add('open');
+      q.setAttribute('aria-expanded', String(!open));
+    });
+  });
 </script>
 </body>
 </html>

@@ -584,37 +584,18 @@
     }
 
     /* ── FAQ (LLM-SEO) ── */
-    #faq {
-      background: var(--cream);
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 6rem 5vw;
-    }
-    #faq .section-heading { margin-bottom: 2.5rem; }
-    .faq-item {
-      border-top: 1px solid var(--sand);
-      padding: 1.5rem 0;
-    }
-    .faq-item:last-child { border-bottom: 1px solid var(--sand); }
-    .faq-q {
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      color: var(--green-deep);
-      cursor: pointer;
-      display: flex; justify-content: space-between; align-items: center;
-      user-select: none;
-    }
-    .faq-q span { color: var(--green-fresh); font-size: 1.3rem; transition: transform 0.2s; }
-    .faq-a {
-      font-size: 0.92rem;
-      color: var(--text-mid);
-      line-height: 1.8;
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.2s;
-      font-weight: 300;
-    }
-    .faq-item.open .faq-a { max-height: 200px; padding-top: 0.75rem; }
-    .faq-item.open .faq-q span { transform: rotate(45deg); }
+    #faq { background: var(--green-deep); padding: 4.5rem 5vw; }
+    #faq .section-heading { color: var(--green-pale); }
+    #faq .section-label { color: var(--green-light); }
+    .faq-list { margin-top: 2rem; max-width: 760px; margin-left: auto; margin-right: auto; }
+    .faq-item { border-bottom: 1px solid rgba(212,234,216,0.14); }
+    .faq-q { width: 100%; background: none; border: none; text-align: left; padding: 1.1rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-family: var(--font-body); font-size: 0.95rem; font-weight: 500; color: var(--green-pale); }
+    .faq-q:hover { color: var(--green-light); }
+    .faq-icon { color: var(--gold); font-size: 1.3rem; flex-shrink: 0; transition: transform 0.25s; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s; }
+    .faq-item.open .faq-a { max-height: 400px; padding-bottom: 1rem; }
+    .faq-a p { font-size: 0.9rem; color: rgba(212,234,216,0.7); line-height: 1.75; }
 
     /* ── CONTACT ── */
     #contact {
@@ -1027,47 +1008,40 @@
   </div>
 
   <div class="services-grid" role="list">
-
-    <article class="service-card reveal" role="listitem">
-      <span class="service-icon" aria-hidden="true">🏞️</span>
-      <h3>Landscape Design</h3>
-      <p>We design outdoor environments that harmonise with architecture and nature. From residential plots to corporate campuses - thoughtful, sustainable landscape architecture tailored to your vision.</p>
-    </article>
-
-    <article class="service-card reveal" role="listitem">
+  <article class="service-card reveal" role="listitem">
       <span class="service-icon" aria-hidden="true">🌸</span>
       <h3>Garden Design & Set Up</h3>
       <p>Complete garden creation - concept, plant curation, soil preparation, irrigation setup, and installation. We design and build gardens that thrive season after season for homes, villas, and businesses.</p>
       <a href="/projects.html" class="service-btn">Click Here</a>
     </article>
-
-    <article class="service-card reveal" role="listitem">
+  <article class="service-card reveal" role="listitem">
       <span class="service-icon" aria-hidden="true">✂️</span>
       <h3>Garden Maintenance</h3>
       <p>Your garden deserves consistent care. Our maintenance programs include pruning, fertilising, pest management, seasonal replanting, and everything in between - on your schedule.</p>
       <a href="/maintenance.html" class="service-btn">Click Here</a>
     </article>
-
-    <article class="service-card reveal" role="listitem">
-      <span class="service-icon" aria-hidden="true">🥭</span>
-      <h3>Exotic Fruits</h3>
-      <p>Rare, tropical, and hard-to-find fruit plants sourced with care. From dragon fruit and rambutan to sapodilla and star apple - bring exotic flavours home with our curated collection.</p>
+  <article class="service-card reveal" role="listitem">
+      <span class="service-icon" aria-hidden="true">🏞️</span>
+      <h3>Landscape Design</h3>
+      <p>We design outdoor environments that harmonise with architecture and nature. From residential plots to corporate campuses - thoughtful, sustainable landscape architecture tailored to your vision.</p>
     </article>
-
-    <article class="service-card reveal" role="listitem">
+  <article class="service-card reveal" role="listitem">
       <span class="service-icon" aria-hidden="true">🫙</span>
       <h3>Terrarium</h3>
       <p>Handcrafted terrariums - open and closed - designed as self-sustaining living art for your home, workspace, or as a thoughtful gift. Each piece is a miniature world of its own.</p>
       <a href="/terrarium.html" class="service-btn">Click Here</a>
     </article>
-
-    <article class="service-card temple-card reveal" role="listitem">
+  <article class="service-card reveal" role="listitem">
+      <span class="service-icon" aria-hidden="true">🥭</span>
+      <h3>Exotic Fruits</h3>
+      <p>Rare, tropical, and hard-to-find fruit plants sourced with care. From dragon fruit and rambutan to sapodilla and star apple - bring exotic flavours home with our curated collection.</p>
+    </article>
+  <article class="service-card temple-card reveal" role="listitem">
       <span class="service-icon" aria-hidden="true">🌳</span>
       <h3>Temple Tree</h3>
       <p>A revolutionary green co-working space - immersed in curated plants and natural light, designed for deep focus, creativity, and human well-being. Where work feels like nature.</p>
       <span class="service-soon">Launching Soon</span>
     </article>
-
   </div>
 </section>
 
@@ -1142,82 +1116,19 @@
 </section>
 
 <!-- FAQ -->
-<section id="faq">
-  <div class="reveal">
-    <div class="section-label" style="text-align: center;">Support & Guidance</div>
-    <h2 class="section-heading" style="text-align: center;">Frequently Asked Questions</h2>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q">
-      <span>What services does GardenPro offer?</span>
-      <span>+</span>
-    </div>
-    <div class="faq-a">GardenPro specialises in landscape design, garden design & setup, garden maintenance, sourcing exotic fruits, custom terrarium builds, aqua terrariums, and our upcoming green co-working space - Temple Tree.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q">
-      <span>Does GardenPro design gardens for homes and offices?</span>
-      <span>+</span>
-    </div>
-    <div class="faq-a">Yes! We design and set up gardens for residential homes, corporate offices, resorts, educational institutions, and commercial properties across India. Each project is customised to meet your specific needs and environment.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q">
-      <span>Where is GardenPro located?</span>
-      <span>+</span>
-    </div>
-    <div class="faq-a">We're based in Bengaluru, Karnataka, but we work pan-India. We've successfully delivered projects across numerous states and continue to expand our reach to serve more of India.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q">
-      <span>How long does a typical garden design project take?</span>
-      <span>+</span>
-    </div>
-    <div class="faq-a">Project timelines vary based on complexity, size, and scope. A small residential garden typically takes 4–8 weeks from concept to installation, while larger landscape projects may take 3–6 months. We provide detailed timelines during the consultation phase.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q">
-      <span>What is Temple Tree?</span>
-      <span>+</span>
-    </div>
-    <div class="faq-a">Temple Tree is GardenPro's upcoming green co-working space - a nature-immersed workspace designed for deep focus, creativity, and human well-being. It combines flexible co-working amenities with curated gardens, natural light, and a philosophy that work and wellness go hand-in-hand.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q">
-      <span>Does GardenPro provide ongoing maintenance?</span>
-      <span>+</span>
-    </div>
-    <div class="faq-a">Absolutely. We offer tailored maintenance plans for all projects - from weekly pruning and watering to seasonal care, pest management, and fertilising. Most clients opt for our monthly or seasonal maintenance programs to keep their gardens thriving year-round.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q">
-      <span>Can GardenPro help with exotic fruit plants?</span>
-      <span>+</span>
-    </div>
-    <div class="faq-a">Yes! We specialise in sourcing and supplying rare and tropical fruit plants across India. Whether you're looking for dragon fruit, rambutan, sapodilla, custard apple, or other exotic varieties, we can source them and provide guidance on cultivation.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q">
-      <span>What's the difference between an open and closed terrarium?</span>
-      <span>+</span>
-    </div>
-    <div class="faq-a">Open terrariums are exposed to air and suit drought-tolerant plants like succulents - they require periodic watering. Closed terrariums are sealed glass containers that create a self-sustaining ecosystem with higher humidity - perfect for tropical plants and moisture-loving species. We recommend based on your space and preferences.</div>
-  </div>
-
-  <div class="faq-item">
-    <div class="faq-q">
-      <span>How do I get started with GardenPro?</span>
-      <span>+</span>
-    </div>
-    <div class="faq-a">Simply reach out via our contact form, call us at +91 76250 40860, or message us on WhatsApp. We'll schedule a free consultation to understand your vision, assess your space, and provide a customised proposal.</div>
+<section id="faq" aria-labelledby="faq-heading">
+  <div class="section-label">Support & Guidance</div>
+  <h2 class="section-heading" id="faq-heading">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">What services does GardenPro offer? <span class="faq-icon">+</span></button><div class="faq-a"><p>GardenPro specialises in landscape design, garden design & setup, garden maintenance, sourcing exotic fruits, custom terrarium builds, aqua terrariums, and our upcoming green co-working space - Temple Tree.</p></div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">Does GardenPro design gardens for homes and offices? <span class="faq-icon">+</span></button><div class="faq-a"><p>Yes! We design and set up gardens for residential homes, corporate offices, resorts, educational institutions, and commercial properties across India. Each project is customised to meet your specific needs and environment.</p></div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">Where is GardenPro located? <span class="faq-icon">+</span></button><div class="faq-a"><p>We're based in Bengaluru, Karnataka, but we work pan-India. We've successfully delivered projects across numerous states and continue to expand our reach to serve more of India.</p></div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">How long does a typical garden design project take? <span class="faq-icon">+</span></button><div class="faq-a"><p>Project timelines vary based on complexity, size, and scope. A small residential garden typically takes 4–8 weeks from concept to installation, while larger landscape projects may take 3–6 months. We provide detailed timelines during the consultation phase.</p></div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">What is Temple Tree? <span class="faq-icon">+</span></button><div class="faq-a"><p>Temple Tree is GardenPro's upcoming green co-working space - a nature-immersed workspace designed for deep focus, creativity, and human well-being. It combines flexible co-working amenities with curated gardens, natural light, and a philosophy that work and wellness go hand-in-hand.</p></div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">Does GardenPro provide ongoing maintenance? <span class="faq-icon">+</span></button><div class="faq-a"><p>Absolutely. We offer tailored maintenance plans for all projects - from weekly pruning and watering to seasonal care, pest management, and fertilising. Most clients opt for our monthly or seasonal maintenance programs to keep their gardens thriving year-round.</p></div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">Can GardenPro help with exotic fruit plants? <span class="faq-icon">+</span></button><div class="faq-a"><p>Yes! We specialise in sourcing and supplying rare and tropical fruit plants across India. Whether you're looking for dragon fruit, rambutan, sapodilla, custard apple, or other exotic varieties, we can source them and provide guidance on cultivation.</p></div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">What's the difference between an open and closed terrarium? <span class="faq-icon">+</span></button><div class="faq-a"><p>Open terrariums are exposed to air and suit drought-tolerant plants like succulents - they require periodic watering. Closed terrariums are sealed glass containers that create a self-sustaining ecosystem with higher humidity - perfect for tropical plants and moisture-loving species. We recommend based on your space and preferences.</p></div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">How do I get started with GardenPro? <span class="faq-icon">+</span></button><div class="faq-a"><p>Simply reach out via our contact form, call us at +91 76250 40860, or message us on WhatsApp. We'll schedule a free consultation to understand your vision, assess your space, and provide a customised proposal.</p></div></div>
   </div>
 </section>
 
