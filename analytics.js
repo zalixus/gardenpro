@@ -10,6 +10,8 @@
 
   // WhatsApp-click conversion label — same on every page.
   var WHATSAPP_ADS_LABEL = '4t7KCPi3sNYcELGR35JE';
+  // Call-click conversion label (tel: links) — same on every page.
+  var CALL_ADS_LABEL = 'CVPMCN-TttgcELGR35JE';
 
   if (typeof window.gtag === 'function') {
     window.gtag('config', ADS_ID);
@@ -63,6 +65,8 @@
       });
       if (contactMethod === 'whatsapp') {
         window.gpAdsConvert(element.getAttribute('data-ads-label') || WHATSAPP_ADS_LABEL);
+      } else if (contactMethod === 'phone') {
+        window.gpAdsConvert(element.getAttribute('data-ads-label') || CALL_ADS_LABEL);
       }
       return;
     }
