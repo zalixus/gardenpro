@@ -192,17 +192,19 @@
     .promise-row span { font-size: 1rem; }
 
     /* PRICING */
-    #pricing { background: var(--green-deep); padding: 5rem 5vw; }
-    #pricing .section-heading { color: var(--green-pale); }
-    #pricing .section-label { color: var(--green-light); }
-    #pricing .section-sub { color: rgba(212,234,216,0.65); }
+    #pricing { background: var(--cream); padding: 5rem 5vw; }
+    #pricing .section-heading { color: var(--text-dark); }
+    #pricing .section-label { color: var(--green-fresh); }
+    #pricing .section-sub { color: var(--text-mid); }
     .pricing-toggle { display: flex; gap: 6px; margin: 1.5rem 0; }
-    .ptoggle-btn { padding: 0.45rem 1.1rem; font-size: 0.82rem; border: 1.5px solid rgba(212,234,216,0.2); background: transparent; border-radius: 3px; cursor: pointer; font-family: var(--font-body); color: rgba(212,234,216,0.6); transition: all 0.15s; }
+    .ptoggle-btn { padding: 0.45rem 1.1rem; font-size: 0.82rem; border: 1.5px solid var(--sand); background: transparent; border-radius: 3px; cursor: pointer; font-family: var(--font-body); color: var(--text-mid); transition: all 0.15s; }
     .ptoggle-btn.active { background: var(--green-fresh); border-color: var(--green-fresh); color: white; }
     .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     .price-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(212,234,216,0.12); border-radius: 6px; padding: 2rem; position: relative; transition: border-color 0.2s; }
     .price-card.featured { background: var(--white); border-color: var(--gold); }
     .popular-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--green-deep); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 12px; border-radius: 10px; white-space: nowrap; }
+    .save-badge { position: absolute; top: 12px; right: 12px; display: none; background: var(--green-fresh); color: #fff; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; padding: 4px 9px; border-radius: 20px; z-index: 3; }
+    .save-badge.on { display: inline-block; }
     .plan-name { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-light); margin-bottom: 0.5rem; }
     .price-card.featured .plan-name { color: var(--green-fresh); }
     .plan-price { font-family: var(--font-display); font-size: 2.2rem; color: var(--green-pale); margin-bottom: 0.25rem; }
@@ -224,7 +226,7 @@
     .plan-cta-ghost:hover { border-color: rgba(212,234,216,0.6); }
     .plan-cta-solid { background: var(--terracotta); color: white; }
     .plan-cta-solid:hover { background: #b05e38; }
-    .pricing-note { margin-top: 1.5rem; font-size: 0.8rem; color: rgba(212,234,216,0.45); text-align: center; }
+    .pricing-note { margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-mid); text-align: center; }
     .discount-badge { display: inline-block; background: rgba(201,168,76,0.2); color: var(--gold); font-size: 0.68rem; padding: 1px 6px; border-radius: 3px; margin-left: 6px; }
 
     /* WHAT WE MAINTAIN */
@@ -351,7 +353,9 @@
       .hero h1 { font-size: 1.75rem; }
       .lead-form { padding: 1.25rem; }
     }
-  </style>
+      .stage-link { color: inherit; text-decoration: underline dotted currentColor; text-underline-offset: 3px; }
+    .stage-link:hover { color: var(--green-fresh); text-decoration-color: var(--green-fresh); }
+</style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
     {"@type":"ListItem","position":1,"name":"Home","item":"https://gardenpro.in/"},
@@ -438,6 +442,76 @@
       <div class="trust-item">✅ No hidden charges</div>
     </div>
   </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-label">Plans & Pricing</div>
+  <h2 class="section-heading">Simple, transparent pricing</h2>
+  <p class="section-sub">All plans include the full 4-stage visit process. Choose how often you want us. Save more with quarterly or half-yearly commitment.</p>
+  <div class="pricing-toggle">
+    <button class="ptoggle-btn active" onclick="setPricing('monthly')">Monthly</button>
+    <button class="ptoggle-btn" onclick="setPricing('quarterly')">Quarterly</button>
+    <button class="ptoggle-btn" onclick="setPricing('halfyearly')">Half-Yearly</button>
+  </div>
+  <div class="pricing-grid">
+    <!-- SILVER -->
+    <div class="price-card">
+      <div class="save-badge" id="savebadge-silver"></div>
+      <div class="plan-name">Silver</div>
+      <div class="plan-price" id="price-silver"><sup>₹</sup>2,999<sub>/mo</sub></div>
+      <div class="plan-save" id="save-silver"></div>
+      <div class="plan-cadence">1 visit per month · up to 2 hrs</div>
+      <div class="plan-visits">🗓 1 visit/month</div>
+      <ul class="plan-features">
+        <li><span class="chk">✓</span> <a class="stage-link" href="#steps">All 4 maintenance stages</a></li>
+        <li><span class="chk">✓</span> WhatsApp report after visit</li>
+        <li><span class="chk">✓</span> Bio-pesticides included</li>
+        <li><span class="chk">✓</span> Organic nutrients included</li>
+        <li><span class="chk">✓</span> Up to 20 pots / plants</li>
+        <li class="dim"><span class="chk">✓</span> Priority scheduling</li>
+      </ul>
+      <button class="plan-cta plan-cta-ghost" onclick="selectPlan('Silver')">Choose Silver</button>
+    </div>
+    <!-- GOLD -->
+    <div class="price-card featured">
+      <div class="popular-badge">Most Popular</div>
+      <div class="save-badge" id="savebadge-gold"></div>
+      <div class="plan-name">Gold</div>
+      <div class="plan-price" id="price-gold"><sup>₹</sup>5,499<sub>/mo</sub></div>
+      <div class="plan-save" id="save-gold"></div>
+      <div class="plan-cadence" style="color:var(--text-mid)">2 visits per month · up to 2 hrs each</div>
+      <div class="plan-visits">🗓 2 visits/month</div>
+      <ul class="plan-features">
+        <li><span class="chk">✓</span> <a class="stage-link" href="#steps">All 4 maintenance stages</a></li>
+        <li><span class="chk">✓</span> WhatsApp report after each visit</li>
+        <li><span class="chk">✓</span> Bio-pesticides included</li>
+        <li><span class="chk">✓</span> Organic nutrients included</li>
+        <li><span class="chk">✓</span> Up to 40 pots / plants</li>
+        <li><span class="chk">✓</span> Priority scheduling</li>
+      </ul>
+      <button class="plan-cta plan-cta-solid" onclick="selectPlan('Gold')">Choose Gold</button>
+    </div>
+    <!-- PLATINUM -->
+    <div class="price-card">
+      <div class="save-badge" id="savebadge-platinum"></div>
+      <div class="plan-name">Platinum</div>
+      <div class="plan-price" id="price-platinum"><sup>₹</sup>8,999<sub>/mo</sub></div>
+      <div class="plan-save" id="save-platinum"></div>
+      <div class="plan-cadence">4 visits per month · up to 2 hrs each</div>
+      <div class="plan-visits">🗓 4 visits/month (weekly)</div>
+      <ul class="plan-features">
+        <li><span class="chk">✓</span> <a class="stage-link" href="#steps">All 4 maintenance stages</a></li>
+        <li><span class="chk">✓</span> WhatsApp report after each visit</li>
+        <li><span class="chk">✓</span> Bio-pesticides included</li>
+        <li><span class="chk">✓</span> Organic nutrients included</li>
+        <li><span class="chk">✓</span> Unlimited pots / plants</li>
+        <li><span class="chk">✓</span> Priority scheduling</li>
+      </ul>
+      <button class="plan-cta plan-cta-ghost" onclick="selectPlan('Platinum')">Choose Platinum</button>
+    </div>
+  </div>
+  <p class="pricing-note">Prices are per month. Travel surcharge may apply beyond 15km from central Bengaluru. Corporate and society bulk rates available, <a href="#contact" style="color:var(--gold)">contact us</a>.</p>
 </section>
 
 <!-- WHY MAINTAIN -->
@@ -569,73 +643,6 @@
       </div>
     </div>
   </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing">
-  <div class="section-label">Plans & Pricing</div>
-  <h2 class="section-heading">Simple, transparent pricing</h2>
-  <p class="section-sub">All plans include the full 4-stage visit process. Choose how often you want us. Save more with quarterly or half-yearly commitment.</p>
-  <div class="pricing-toggle">
-    <button class="ptoggle-btn active" onclick="setPricing('monthly')">Monthly</button>
-    <button class="ptoggle-btn" onclick="setPricing('quarterly')">Quarterly</button>
-    <button class="ptoggle-btn" onclick="setPricing('halfyearly')">Half-Yearly</button>
-  </div>
-  <div class="pricing-grid">
-    <!-- SILVER -->
-    <div class="price-card">
-      <div class="plan-name">Silver</div>
-      <div class="plan-price" id="price-silver"><sup>₹</sup>2,999<sub>/mo</sub></div>
-      <div class="plan-save" id="save-silver"></div>
-      <div class="plan-cadence">1 visit per month · up to 2 hrs</div>
-      <div class="plan-visits">🗓 1 visit/month</div>
-      <ul class="plan-features">
-        <li><span class="chk">✓</span> All 4 maintenance stages</li>
-        <li><span class="chk">✓</span> WhatsApp report after visit</li>
-        <li><span class="chk">✓</span> Bio-pesticides included</li>
-        <li><span class="chk">✓</span> Organic nutrients included</li>
-        <li><span class="chk">✓</span> Up to 20 pots / plants</li>
-        <li class="dim"><span class="chk">✓</span> Priority scheduling</li>
-      </ul>
-      <button class="plan-cta plan-cta-ghost" onclick="selectPlan('Silver')">Choose Silver</button>
-    </div>
-    <!-- GOLD -->
-    <div class="price-card featured">
-      <div class="popular-badge">Most Popular</div>
-      <div class="plan-name">Gold</div>
-      <div class="plan-price" id="price-gold"><sup>₹</sup>5,499<sub>/mo</sub></div>
-      <div class="plan-save" id="save-gold"></div>
-      <div class="plan-cadence" style="color:var(--text-mid)">2 visits per month · up to 2 hrs each</div>
-      <div class="plan-visits">🗓 2 visits/month</div>
-      <ul class="plan-features">
-        <li><span class="chk">✓</span> All 4 maintenance stages</li>
-        <li><span class="chk">✓</span> WhatsApp report after each visit</li>
-        <li><span class="chk">✓</span> Bio-pesticides included</li>
-        <li><span class="chk">✓</span> Organic nutrients included</li>
-        <li><span class="chk">✓</span> Up to 40 pots / plants</li>
-        <li><span class="chk">✓</span> Priority scheduling</li>
-      </ul>
-      <button class="plan-cta plan-cta-solid" onclick="selectPlan('Gold')">Choose Gold</button>
-    </div>
-    <!-- PLATINUM -->
-    <div class="price-card">
-      <div class="plan-name">Platinum</div>
-      <div class="plan-price" id="price-platinum"><sup>₹</sup>8,999<sub>/mo</sub></div>
-      <div class="plan-save" id="save-platinum"></div>
-      <div class="plan-cadence">4 visits per month · up to 2 hrs each</div>
-      <div class="plan-visits">🗓 4 visits/month (weekly)</div>
-      <ul class="plan-features">
-        <li><span class="chk">✓</span> All 4 maintenance stages</li>
-        <li><span class="chk">✓</span> WhatsApp report after each visit</li>
-        <li><span class="chk">✓</span> Bio-pesticides included</li>
-        <li><span class="chk">✓</span> Organic nutrients included</li>
-        <li><span class="chk">✓</span> Unlimited pots / plants</li>
-        <li><span class="chk">✓</span> Priority scheduling</li>
-      </ul>
-      <button class="plan-cta plan-cta-ghost" onclick="selectPlan('Platinum')">Choose Platinum</button>
-    </div>
-  </div>
-  <p class="pricing-note">Prices are per month. Travel surcharge may apply beyond 15km from central Bengaluru. Corporate and society bulk rates available, <a href="#contact" style="color:var(--gold)">contact us</a>.</p>
 </section>
 
 <!-- WHAT WE MAINTAIN -->
@@ -895,10 +902,24 @@
     else { document.getElementById('price-silver').innerHTML = `<sup>₹</sup>${p.silver}<sub>${c}</sub>`; }
     document.getElementById('price-gold').innerHTML = `<sup>₹</sup>${p.gold}<sub>${c}</sub>`;
     document.getElementById('price-platinum').innerHTML = `<sup>₹</sup>${p.platinum}<sub>${c}</sub>`;
+    var months = { monthly: 0, quarterly: 3, halfyearly: 6 }[period] || 0;
+    function billedTotal(perMonth) {
+      var total = parseInt(String(perMonth).replace(/[^0-9]/g, ''), 10) * months;
+      return 'billed ₹' + total.toLocaleString('en-IN') + ' for ' + months + ' months';
+    }
+    var sg = document.getElementById('save-gold'); if (sg) sg.textContent = months ? billedTotal(p.gold) : '';
+    var sp = document.getElementById('save-platinum'); if (sp) sp.textContent = months ? billedTotal(p.platinum) : '';
+    var ss = document.getElementById('save-silver'); if (ss) ss.textContent = freedom ? '' : (months ? billedTotal(p.silver) : '');
     var sv = { monthly: '', quarterly: 'Save 10%', halfyearly: 'Save 15%' }[period] || '';
-    var sg = document.getElementById('save-gold'); if (sg) sg.textContent = sv;
-    var sp = document.getElementById('save-platinum'); if (sp) sp.textContent = sv;
-    var ss = document.getElementById('save-silver'); if (ss) ss.textContent = freedom ? '' : sv;
+    function setSaveBadge(id, show) {
+      var el = document.getElementById(id); if (!el) return;
+      var on = !!(show && sv);
+      el.textContent = on ? sv : '';
+      el.classList.toggle('on', on);
+    }
+    setSaveBadge('savebadge-gold', true);
+    setSaveBadge('savebadge-platinum', true);
+    setSaveBadge('savebadge-silver', !freedom);
   }
 
   // Pre-fill plan from pricing CTA
