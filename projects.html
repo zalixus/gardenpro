@@ -274,6 +274,14 @@
     footer a:hover { color: var(--green-pale); }
     .footer-links { display: flex; gap: 1.5rem; }
     .footer-links a { font-size: 0.8rem; }
+    footer { flex-direction: column; align-items: stretch; text-align: left; }
+    .footer-seo { display: grid; grid-template-columns: 1.4fr 1.1fr 1fr; gap: 1.4rem 2.5rem; width: 100%; padding-bottom: 1.6rem; margin-bottom: 1.3rem; border-bottom: 1px solid rgba(122,184,144,0.14); }
+    .fcol-h { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-light); font-weight: 600; margin-bottom: 0.9rem; }
+    .fcol a { display: block; font-size: 0.82rem; color: rgba(212,234,216,0.62); text-decoration: none; padding: 5px 0; line-height: 1.3; }
+    .fcol a:hover { color: var(--green-pale); }
+    .footer-bottom { width: 100%; }
+    @media (max-width: 760px) { .footer-seo { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 460px) { .footer-seo { grid-template-columns: 1fr; } .footer-bottom { text-align: center; } }
 
     /* WA FLOAT */
     .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; background: #25D366; color: white; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.45); transition: transform 0.2s; }
@@ -400,15 +408,6 @@
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Book Your First Site Inspection Visit @ ₹499 →</a>
       <a href="#portfolio" class="btn-ghost">See Our Work</a>
-    </div>
-    <div class="geo-tags">
-      <span class="geo-tag">📍 HSR Layout</span>
-      <span class="geo-tag">📍 Koramangala</span>
-      <span class="geo-tag">📍 Indiranagar</span>
-      <span class="geo-tag">📍 Whitefield</span>
-      <span class="geo-tag">📍 Jayanagar</span>
-      <span class="geo-tag">📍 Hebbal</span>
-      <span class="geo-tag">📍 Sarjapur Road</span>
     </div>
     </div><!-- /hero-text -->
     <div class="hero-collage" aria-hidden="true">
@@ -601,14 +600,44 @@
 </section>
 
 <footer>
-  <p>© 2026 GardenPro Solutions · <a href="/">gardenpro.in</a> · <a href="tel:+917625040860">+91 76250 40860</a> · <a href="mailto:gardenproblr@gmail.com">gardenproblr@gmail.com</a></p>
-  <nav class="footer-links">
-    <a href="/">Home</a>
-    <a href="/projects.html">Garden Design &amp; Setup</a>
-    <a href="/maintenance.html">Garden Maintenance</a>
-    <a href="/terrarium.html">Terrarium &amp; Aquascaping</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <div class="footer-seo">
+    <div class="fcol">
+      <div class="fcol-h">Garden Setup &amp; Design by Area</div>
+      <a href="#contact">Garden Setup in Whitefield</a>
+      <a href="#contact">Garden Design in Varthur</a>
+      <a href="#contact">Balcony Garden Setup in Rajaji Nagar</a>
+      <a href="#contact">Terrace Garden Setup in Electronic City</a>
+      <a href="#contact">Garden Landscaping in Anekal</a>
+      <a href="#contact">Garden Installation in Bellandur</a>
+      <a href="#contact">Vertical Garden Design in Brookefield</a>
+      <a href="#contact">Landscape Design in Begur</a>
+      <a href="#contact">Home Garden Setup in Kudlu Gate</a>
+      <a href="#contact">Garden Makeover in Kadugodi</a>
+    </div>
+    <div class="fcol">
+      <div class="fcol-h">Setup, Design &amp; Landscaping</div>
+      <a href="#contact">Balcony Garden Setup</a>
+      <a href="#contact">Terrace Garden Setup</a>
+      <a href="#contact">Villa Garden Setup</a>
+      <a href="#contact">Office Garden Setup</a>
+      <a href="#contact">Rooftop Garden Setup</a>
+      <a href="#contact">Vertical Garden Design</a>
+      <a href="#contact">Garden Landscaping</a>
+      <a href="#contact">Landscape Design</a>
+      <a href="#contact">Garden Makeover &amp; Revamp</a>
+    </div>
+    <div class="fcol">
+      <div class="fcol-h">Explore GardenPro</div>
+      <a href="/">Home</a>
+      <a href="/maintenance.html">Garden Maintenance</a>
+      <a href="/terrarium.html">Terrarium &amp; Aquascaping</a>
+      <a href="#portfolio">Our Projects</a>
+      <a href="#contact">Contact / Book a Visit</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 GardenPro Solutions · <a href="/">gardenpro.in</a> · <a href="tel:+917625040860">+91 76250 40860</a> · <a href="mailto:gardenproblr@gmail.com">gardenproblr@gmail.com</a></p>
+  </div>
 </footer>
 
 <!-- WA FLOAT -->
