@@ -65,11 +65,17 @@
 
   <style>
     :root {
-      --green-deep: #1a3a2a;
-      --green-mid: #2d5a3d;
-      --green-fresh: #4a8c5c;
-      --green-light: #7ab890;
-      --green-pale: #d4ead8;
+      /* Brand colour tokens — single source of truth (change these to rebrand) */
+      --primary-rgb: 13, 84, 54;        /* #0D5436 */
+      --secondary-rgb: 108, 149, 81;    /* #6C9551 */
+      --deepmid-rgb: 46, 107, 63;       /* #2E6B3F */
+      --light-rgb: 147, 182, 116;       /* #93B674 */
+      --pale-rgb: 214, 231, 200;        /* #D6E7C8 */
+      --green-deep: rgb(var(--primary-rgb));
+      --green-mid: rgb(var(--deepmid-rgb));
+      --green-fresh: rgb(var(--secondary-rgb));
+      --green-light: rgb(var(--light-rgb));
+      --green-pale: rgb(var(--pale-rgb));
       --cream: #f5f0e8;
       --sand: #e8dcc8;
       --terracotta: #c4724a;
@@ -87,15 +93,17 @@
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(26,58,42,0.96); backdrop-filter: blur(12px);
+      background: rgba(var(--primary-rgb),0.96); backdrop-filter: blur(12px);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 5vw; height: 64px;
-      border-bottom: 1px solid rgba(122,184,144,0.2);
+      border-bottom: 1px solid rgba(var(--light-rgb),0.2);
     }
     .nav-logo { font-family: var(--font-display); font-size: 1.4rem; color: var(--green-pale); text-decoration: none; letter-spacing: 0.03em; }
     .nav-logo span { color: var(--gold); }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo-img { height: 30px; width: auto; display: block; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { color: rgba(212,234,216,0.8); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a { color: rgba(var(--pale-rgb),0.8); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--green-pale); }
     .nav-hamburger { display: none; flex-direction: column; justify-content: space-between; width: 28px; height: 20px; background: none; border: none; cursor: pointer; padding: 0; }
     .nav-hamburger span { display: block; height: 2px; width: 100%; background: var(--green-pale); border-radius: 2px; transition: all 0.25s; }
@@ -115,8 +123,8 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(74,140,92,0.18) 0%, transparent 70%),
-                  radial-gradient(ellipse 40% 60% at 20% 80%, rgba(45,90,61,0.3) 0%, transparent 60%);
+      background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(var(--secondary-rgb),0.18) 0%, transparent 70%),
+                  radial-gradient(ellipse 40% 60% at 20% 80%, rgba(var(--deepmid-rgb),0.3) 0%, transparent 60%);
     }
     .hero-content { position: relative; z-index: 2; max-width: 720px; }
     .hero-badge {
@@ -127,7 +135,7 @@
     }
     .hero h1 { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 3.5rem); color: var(--green-pale); line-height: 1.15; margin-bottom: 1.5rem; }
     .hero h1 em { font-style: italic; color: var(--gold); }
-    .hero p { color: rgba(212,234,216,0.75); font-size: 1.05rem; line-height: 1.7; max-width: 600px; margin-bottom: 2rem; }
+    .hero p { color: rgba(var(--pale-rgb),0.75); font-size: 1.05rem; line-height: 1.7; max-width: 600px; margin-bottom: 2rem; }
     .hero-actions { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
     .btn-primary, .btn-ghost {
       display: inline-block; padding: 0.85rem 1.8rem; border-radius: 2px;
@@ -136,12 +144,12 @@
     }
     .btn-primary { background: var(--terracotta); color: white; border: 1px solid var(--terracotta); }
     .btn-primary:hover { background: #b05e38; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(196,114,74,0.3); }
-    .btn-ghost { background: transparent; color: var(--green-pale); border: 1px solid rgba(212,234,216,0.4); }
-    .btn-ghost:hover { background: rgba(212,234,216,0.08); border-color: var(--green-pale); }
+    .btn-ghost { background: transparent; color: var(--green-pale); border: 1px solid rgba(var(--pale-rgb),0.4); }
+    .btn-ghost:hover { background: rgba(var(--pale-rgb),0.08); border-color: var(--green-pale); }
     .geo-tags { display: flex; gap: 0.8rem; flex-wrap: wrap; }
     .geo-tag {
-      font-size: 0.7rem; color: rgba(212,234,216,0.5); letter-spacing: 0.08em;
-      padding: 0.3rem 0.7rem; border: 1px solid rgba(212,234,216,0.15);
+      font-size: 0.7rem; color: rgba(var(--pale-rgb),0.5); letter-spacing: 0.08em;
+      padding: 0.3rem 0.7rem; border: 1px solid rgba(var(--pale-rgb),0.15);
       border-radius: 2px; text-transform: uppercase;
     }
 
@@ -164,7 +172,7 @@
       gap: 2rem; align-items: center; margin-bottom: 3rem;
     }
     .process-step {
-      background: var(--cream); border: 1px solid rgba(74,140,92,0.15);
+      background: var(--cream); border: 1px solid rgba(var(--secondary-rgb),0.15);
       padding: 2rem 1.5rem; border-radius: 4px; text-align: center;
     }
     .step-icon { font-size: 2.5rem; margin-bottom: 1rem; }
@@ -178,15 +186,15 @@
     .step-desc { color: var(--text-mid); font-size: 0.9rem; line-height: 1.65; margin-bottom: 1.25rem; }
     .step-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
     .step-tag {
-      font-size: 0.7rem; background: rgba(74,140,92,0.08); color: var(--green-fresh);
-      padding: 0.35rem 0.75rem; border-radius: 2px; border: 1px solid rgba(74,140,92,0.2);
+      font-size: 0.7rem; background: rgba(var(--secondary-rgb),0.08); color: var(--green-fresh);
+      padding: 0.35rem 0.75rem; border-radius: 2px; border: 1px solid rgba(var(--secondary-rgb),0.2);
       letter-spacing: 0.05em; font-weight: 500;
     }
     .process-arrow { font-size: 2rem; color: var(--green-light); }
     .process-timeline {
       display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
       padding: 2rem; background: var(--cream); border-radius: 4px;
-      border: 1px solid rgba(74,140,92,0.15);
+      border: 1px solid rgba(var(--secondary-rgb),0.15);
     }
     .timeline-item { text-align: center; }
     .timeline-val {
@@ -201,9 +209,9 @@
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
     .service-card {
       background: var(--white); padding: 2.5rem 2rem; border-radius: 4px;
-      border: 1px solid rgba(74,140,92,0.12); transition: all 0.3s ease;
+      border: 1px solid rgba(var(--secondary-rgb),0.12); transition: all 0.3s ease;
     }
-    .service-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(26,58,42,0.12); }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(var(--primary-rgb),0.12); }
     .service-icon { font-size: 2.8rem; margin-bottom: 1.25rem; display: block; }
     .service-card h3 {
       font-family: var(--font-display); font-size: 1.6rem; color: var(--green-deep);
@@ -220,9 +228,9 @@
     .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
     .portfolio-card {
       background: var(--cream); border-radius: 4px; overflow: hidden;
-      border: 1px solid rgba(74,140,92,0.15); transition: all 0.3s ease;
+      border: 1px solid rgba(var(--secondary-rgb),0.15); transition: all 0.3s ease;
     }
-    .portfolio-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(26,58,42,0.12); }
+    .portfolio-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(var(--primary-rgb),0.12); }
     .portfolio-img {
       width: 100%; aspect-ratio: 4/3; object-fit: contain; background: #12281b;
       display: block;
@@ -241,17 +249,17 @@
     /* CONTACT */
     #contact { background: var(--sand); }
     .contact-wrapper { display: grid; grid-template-columns: 1fr 300px; gap: 3rem; align-items: start; }
-    .contact-form { background: var(--white); padding: 2.5rem; border-radius: 4px; border: 1px solid rgba(74,140,92,0.15); }
+    .contact-form { background: var(--white); padding: 2.5rem; border-radius: 4px; border: 1px solid rgba(var(--secondary-rgb),0.15); }
     .form-group { margin-bottom: 1.5rem; }
     .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--green-deep); margin-bottom: 0.5rem; letter-spacing: 0.03em; }
     .form-group input, .form-group textarea, .form-group select {
-      width: 100%; padding: 0.75rem 1rem; border: 1px solid rgba(74,140,92,0.25);
+      width: 100%; padding: 0.75rem 1rem; border: 1px solid rgba(var(--secondary-rgb),0.25);
       border-radius: 2px; font-family: var(--font-body); font-size: 0.9rem;
       background: var(--cream); color: var(--text-dark); transition: all 0.2s;
     }
     .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
       outline: none; border-color: var(--green-fresh);
-      box-shadow: 0 0 0 3px rgba(74,140,92,0.1);
+      box-shadow: 0 0 0 3px rgba(var(--secondary-rgb),0.1);
     }
     .form-group textarea { resize: vertical; min-height: 120px; }
     .form-submit {
@@ -263,7 +271,7 @@
     .contact-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
     .sidebar-card {
       background: var(--white); padding: 1.5rem; border-radius: 4px;
-      border: 1px solid rgba(74,140,92,0.15);
+      border: 1px solid rgba(var(--secondary-rgb),0.15);
     }
     .sidebar-label { font-size: 0.8rem; font-weight: 600; color: var(--green-deep); margin-bottom: 0.5rem; letter-spacing: 0.05em; }
     .sidebar-text { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
@@ -279,7 +287,7 @@
     .wa-float:hover { transform: scale(1.1); }
     .wa-float svg { width: 28px; height: 28px; }
     @media (max-width: 768px) {
-      .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: rgba(26,58,42,0.98); padding: 1rem 5vw 1.5rem; gap: 1rem; border-bottom: 1px solid rgba(122,184,144,0.2); }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: rgba(var(--primary-rgb),0.98); padding: 1rem 5vw 1.5rem; gap: 1rem; border-bottom: 1px solid rgba(var(--light-rgb),0.2); }
       .nav-links.open { display: flex; }
       .nav-hamburger { display: flex; }
       .process-flow { grid-template-columns: 1fr; }
@@ -289,7 +297,16 @@
       .wa-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
       .wa-float svg { width: 24px; height: 24px; }
     }
-  </style>
+  
+  /* ── LIGHT HEADER (rebrand) ── */
+  nav { background: rgba(254,254,254,0.97); border-bottom: 1px solid var(--sand); }
+  .nav-links a { color: var(--text-mid); }
+  .nav-links a:hover { color: var(--green-deep); }
+  .nav-phone { color: var(--green-deep) !important; }
+  .nav-phone:hover { color: var(--terracotta) !important; }
+  .nav-hamburger span { background: var(--green-deep); }
+  @media (max-width: 1024px) { .nav-links { background: rgba(254,254,254,0.98) !important; border-bottom: 1px solid var(--sand) !important; } }
+</style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
     {"@type":"ListItem","position":1,"name":"Home","item":"https://gardenpro.in/"},
@@ -303,7 +320,7 @@
   /* Responsive navigation: hamburger on tablet & mobile (<=1024px); desktop unchanged */
   @media (max-width: 1024px) {
     .nav-hamburger { display: flex !important; }
-    .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: rgba(26,58,42,0.98); padding: 1rem 5vw 1.5rem; gap: 1rem; border-bottom: 1px solid rgba(122,184,144,0.2); z-index: 99; }
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: rgba(var(--primary-rgb),0.98); padding: 1rem 5vw 1.5rem; gap: 1rem; border-bottom: 1px solid rgba(var(--light-rgb),0.2); z-index: 99; }
     .nav-links.open { display: flex; }
   }
   footer nav { position: static; top: auto; left: auto; right: auto; background: none; height: auto; padding: 0; border: none; z-index: auto; backdrop-filter: none; }
@@ -313,14 +330,14 @@
   #faq .section-heading { color: var(--green-pale); }
   #faq .section-label { color: var(--green-light); }
   .faq-list { margin-top: 2rem; max-width: 760px; margin-left: auto; margin-right: auto; }
-  .faq-item { border-bottom: 1px solid rgba(212,234,216,0.14); }
+  .faq-item { border-bottom: 1px solid rgba(var(--pale-rgb),0.14); }
   .faq-q { width: 100%; background: none; border: none; text-align: left; padding: 1.1rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-family: var(--font-body); font-size: 0.95rem; font-weight: 500; color: var(--green-pale); }
   .faq-q:hover { color: var(--green-light); }
   .faq-icon { color: var(--gold); font-size: 1.3rem; flex-shrink: 0; transition: transform 0.25s; }
   .faq-item.open .faq-icon { transform: rotate(45deg); }
   .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s; }
   .faq-item.open .faq-a { max-height: 400px; padding-bottom: 1rem; }
-  .faq-a p { font-size: 0.9rem; color: rgba(212,234,216,0.7); line-height: 1.75; }
+  .faq-a p { font-size: 0.9rem; color: rgba(var(--pale-rgb),0.7); line-height: 1.75; }
   </style>
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does a custom terrarium cost in Bengaluru?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the size, the container and the plants or aquascape design you choose. Tell us your space and budget and we'll recommend options and share a quote."}}, {"@type": "Question", "name": "Do you make terrariums for gifting or for offices?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Custom terrariums make great corporate and personal gifts, and we build low-maintenance terrariums and green corners for offices across Bengaluru."}}, {"@type": "Question", "name": "What is aquascaping?", "acceptedAnswer": {"@type": "Answer", "text": "Aquascaping is the art of designing a planted aquarium, arranging aquatic plants, stone and driftwood into a living underwater landscape."}}, {"@type": "Question", "name": "Do you set up aquariums and aquascapes in Bengaluru?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, we design and install custom aquariums, planted tanks and aquascapes for homes and offices across Bengaluru, with care guidance included."}}]}
@@ -330,7 +347,7 @@
 
 <!-- NAV -->
 <nav role="navigation" aria-label="Main navigation">
-  <a href="/" class="nav-logo">Garden<span>Pro</span></a>
+  <a href="/" class="nav-logo"><img class="nav-logo-img" src="GardenPro_Rebranded_Logo.png" alt="GardenPro" /></a>
   <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false" onclick="toggleNav()">
     <span></span><span></span><span></span>
   </button>
@@ -531,14 +548,15 @@
   </div>
 </section>
 
-<footer role="contentinfo" style="background:#0f2417;color:#d4ead8;text-align:center;padding:2.5rem 1.5rem;font-size:0.85rem;">
+<footer role="contentinfo" style="background:#0f2417;color:var(--green-pale);text-align:center;padding:2.5rem 1.5rem;font-size:0.85rem;">
+  <img src="GardenPro_Rebranded_Logo_White.svg" alt="GardenPro Solutions" style="height:30px;width:auto;display:inline-block;margin-bottom:1.1rem;" />
   <p style="margin-bottom:1rem;">© 2026 GardenPro Solutions · <a href="/" style="color:#9ecfae;">gardenpro.in</a> · <a href="tel:+917625040860" style="color:#9ecfae;">+91 76250 40860</a> · <a href="mailto:gardenproblr@gmail.com" style="color:#9ecfae;">gardenproblr@gmail.com</a></p>
   <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;">
-    <a href="/" style="color:#d4ead8;text-decoration:none;">Home</a>
-    <a href="/projects.html" style="color:#d4ead8;text-decoration:none;">Garden Design &amp; Setup</a>
-    <a href="/maintenance.html" style="color:#d4ead8;text-decoration:none;">Garden Maintenance</a>
-    <a href="/terrarium.html" style="color:#d4ead8;text-decoration:none;">Terrarium &amp; Aquascaping</a>
-    <a href="#contact" style="color:#d4ead8;text-decoration:none;">Contact</a>
+    <a href="/" style="color:var(--green-pale);text-decoration:none;">Home</a>
+    <a href="/projects.html" style="color:var(--green-pale);text-decoration:none;">Garden Design &amp; Setup</a>
+    <a href="/maintenance.html" style="color:var(--green-pale);text-decoration:none;">Garden Maintenance</a>
+    <a href="/terrarium.html" style="color:var(--green-pale);text-decoration:none;">Terrarium &amp; Aquascaping</a>
+    <a href="#contact" style="color:var(--green-pale);text-decoration:none;">Contact</a>
   </nav>
 </footer>
 
